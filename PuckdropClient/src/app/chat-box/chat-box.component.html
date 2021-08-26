@@ -6,10 +6,14 @@
         </div>
     </div>
     <div class="message-input-area input-group mb-3">
-        <input type="text" class="form-control" placeholder="Enter a message" aria-label="Message content" aria-describedby="button-addon">
+        <input type="text" class="form-control" (keyup)="messageChanged($event)" [(ngModel)]='messageToSend' 
+        placeholder="Enter a message" aria-label="Message content" aria-describedby="button-addon" [maxlength]="maxMessageLength">
         <div class="input-group-append">
-            <button class="btn btn-primary" type="button" id="button-addon">Send message</button>
+            <button class="btn btn-primary" type="button" id="button-addon" (click)="sendMessage()">Send message</button>
         </div>
+    </div>
+    <div class="characters-left">
+        <small class="characters-left-label">{{ charactersLeft }} characters remaining</small>
     </div>
 </div>
 

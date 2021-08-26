@@ -19,6 +19,7 @@ export class LeagueStandingsTableComponent implements OnInit {
   rawStandings: any = {}
   newStandings: any = {}
   focusedDivision: Division = Division.League
+  tableOpen: boolean = false;
   constructor(private standingsService: StandingsService) { }
 
   ngOnInit() {
@@ -32,6 +33,7 @@ export class LeagueStandingsTableComponent implements OnInit {
     switch(event.target.getAttribute("for")) {
       case "League":
         this.focusedDivision = Division.League;
+        this.tableOpen = false;
         break;
       case "Honda West":
         this.focusedDivision = Division.West;
@@ -66,6 +68,8 @@ export class LeagueStandingsTableComponent implements OnInit {
     console.log(this.newStandings);
   }
 
-
+  toggleTableOpen() {
+    this.tableOpen = !this.tableOpen;
+  }
 
 }
