@@ -1,7 +1,7 @@
 <app-navbar></app-navbar>
 <div class="page-header" *ngIf="(teamInfo | json) != ({} | json); else headerSkeleton">
     <img class="team-logo" [src]="getTeamLogo()"/>
-    <h1 class="page-title">{{ teamInfo.name }}</h1>
+    <h1 class="page-title">{{ teamInfo.name }}<sup class="title-sup">{{teamInfo.teamStats[0].splits[1].stat.pts}}</sup></h1>
     <h5 class="page-subheader">
         {{teamInfo.teamStats[0].splits[0].stat.wins}} -
         {{teamInfo.teamStats[0].splits[0].stat.losses}} -
@@ -43,49 +43,49 @@
                 </th>
                 <td>
                     {{ teamInfo.teamStats[0].splits[0].stat.wins }}
-                    <sup>
+                    <sup class="table-sup">
                         {{ teamInfo.teamStats[0].splits[1].stat.wins }}
                     </sup>
                 </td>
                 <td>
                     {{ teamInfo.teamStats[0].splits[0].stat.losses }}
-                    <sup>
+                    <sup class="table-sup">
                         {{ teamInfo.teamStats[0].splits[1].stat.losses }}
                     </sup>
                 </td>
                 <td>
                     {{ teamInfo.teamStats[0].splits[0].stat.ot }}
-                    <sup>
+                    <sup class="table-sup">
                         {{ teamInfo.teamStats[0].splits[1].stat.ot }}
                     </sup>
                 </td>
                 <td>
                     {{ teamInfo.teamStats[0].splits[0].stat.pts }}
-                    <sup>
+                    <sup class="table-sup">
                         {{ teamInfo.teamStats[0].splits[1].stat.pts }}
                     </sup>
                 </td>
                 <td>
                     {{ teamInfo.teamStats[0].splits[0].stat.goalsPerGame }}
-                    <sup>
+                    <sup class="table-sup">
                         {{ teamInfo.teamStats[0].splits[1].stat.goalsPerGame }}
                     </sup>
                 </td>
                 <td>
                     {{ teamInfo.teamStats[0].splits[0].stat.goalsAgainstPerGame }}
-                    <sup>
+                    <sup class="table-sup">
                         {{ teamInfo.teamStats[0].splits[1].stat.goalsAgainstPerGame }}
                     </sup>
                 </td>
                 <td>
                     {{ teamInfo.teamStats[0].splits[0].stat.shotsPerGame }}
-                    <sup>
+                    <sup class="table-sup">
                         {{ teamInfo.teamStats[0].splits[1].stat.shotsPerGame }}
                     </sup>
                 </td>
                 <td>
                     {{ teamInfo.teamStats[0].splits[0].stat.savePctg }}
-                    <sup>
+                    <sup class="table-sup">
                         {{ teamInfo.teamStats[0].splits[1].stat.savePctRank }}
                     </sup>
                 </td>
