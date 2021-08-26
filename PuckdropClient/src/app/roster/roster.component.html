@@ -1,0 +1,57 @@
+<div class="roster-parent">
+    <h2 class="section-title">Team Roster</h2>
+    <div class="roster-forwards-parent">
+        <h4 class="column-title">Forwards</h4>
+        <div class="roster-forwards">
+            <div class="roster-forwards-lw" *ngIf="roster.forwards.lw.length > 0">
+                <h5>Left Wingers</h5>
+                <div class="card" *ngFor="let forward of roster.forwards.lw" routerLink="/people/{{forward.person.id}}" [state]="{id: forward.person.id}">
+                    <div class="card-body">
+                        <h6 class="jersey-number">#{{ forward.jerseyNumber }}</h6>
+                        <h5 class="card-title">{{ forward.person.fullName }}</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="roster-forwards-c" *ngIf="roster.forwards.c.length > 0">
+                <h5>Centers</h5>
+                <div class="card" *ngFor="let forward of roster.forwards.c" routerLink="/people/{{forward.person.id}}" [state]="{id: forward.person.id}">
+                    <div class="card-body">
+                        <h6 class="jersey-number">#{{ forward.jerseyNumber }}</h6>
+                        <h5 class="card-title">{{ forward.person.fullName }}</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="roster-forwards-rw" *ngIf="roster.forwards.rw.length > 0">
+                <h5>Right Wingers</h5>
+                <div class="card" *ngFor="let forward of roster.forwards.rw" routerLink="/people/{{forward.person.id}}" [state]="{id: forward.person.id}">
+                    <div class="card-body">
+                        <h6 class="jersey-number">#{{ forward.jerseyNumber }}</h6>
+                        <h5 class="card-title">{{ forward.person.fullName }}</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="roster-defensemen-parent" *ngIf="roster.defenders.length > 0">
+        <h4 class="column-title">Defensemen</h4>
+        <div class="roster-defensemen">
+            <div class="card" *ngFor="let defender of roster.defenders" routerLink="/people/{{defender.person.id}}" [state]="{id: defender.person.id}">
+                <div class="card-body">
+                    <h6 class="jersey-number">#{{ defender.jerseyNumber }}</h6>
+                    <h5 class="card-title">{{ defender.person.fullName }}</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="roster-goalies-parent" *ngIf="roster.goalies.length > 0">
+        <h4 class="column-title">Goalies</h4>
+        <div class="roster-goalies">
+            <div class="card" *ngFor="let goalie of roster.goalies" routerLink="/people/{{goalie.person.id}}" [state]="{id: goalie.person.id}">
+                <div class="card-body">
+                    <h6 class="jersey-number">#{{ goalie.jerseyNumber }}</h6>
+                    <h5 class="card-title">{{ goalie.person.fullName }}</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

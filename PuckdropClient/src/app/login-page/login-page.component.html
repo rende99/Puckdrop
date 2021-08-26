@@ -1,0 +1,102 @@
+<video autoplay [muted]="true" loop id="NHLVideo">
+    <source src="../../assets/vid/nhl_broll.mp4" type="video/mp4">
+</video>
+<h1 class="site-title">Puckdrop</h1>
+<div class="form-section">
+    <form class="form-parent" [formGroup]="signupInfo" (ngSubmit)="signupSubmitForm()">
+        <h2>Sign up</h2>
+        <div class="form-group">
+            <label for="usernameInput">Username<sup>*</sup></label>
+            <span *ngIf="signupInfo.controls.username.invalid && 
+                (signupInfo.controls.username.dirty || signupInfo.controls.username.touched)" class="invalid-form">
+                <label *ngIf="signupInfo.controls.username.errors?.required" class="invalid-form">
+                    A username is required.
+                </label>
+                <label *ngIf="signupInfo.controls.username.errors?.minlength" class="invalid-form">
+                    That username is too short!
+                </label>
+                <label *ngIf="signupInfo.controls.username.errors?.maxlength" class="invalid-form">
+                    That username is too long!
+                </label>
+            </span>
+            <label *ngIf="signupInfo.controls.username.valid" class="valid-form">
+                <i class="fas fa-check-circle"></i>
+            </label>
+            
+            <input type="text" class="form-control" id="usernameInput"
+                placeholder="Username" formControlName="username" required>
+        </div>
+        <div class="form-group">
+            <label for="passwordInput">Password<sup>*</sup></label>
+            <span *ngIf="signupInfo.controls.password.invalid && 
+                (signupInfo.controls.password.dirty || signupInfo.controls.password.touched)" class="invalid-form">
+                <label *ngIf="signupInfo.controls.password.errors?.required" class="invalid-form">
+                    A password is required.
+                </label>
+                <label *ngIf="signupInfo.controls.password.errors?.minlength" class="invalid-form">
+                    That password is too short!
+                </label>
+                <label *ngIf="signupInfo.controls.password.errors?.maxlength" class="invalid-form">
+                    That password is too long!
+                </label>
+            </span>
+            <label *ngIf="signupInfo.controls.password.valid" class="valid-form">
+                <i class="fas fa-check-circle"></i>
+            </label>
+            
+            <input type="password" class="form-control" id="passwordInput" 
+                placeholder="Password" formControlName="password" required>
+            <small id="passwordHelp" class="form-text text-muted">Between 8 and 20 characters!</small>
+        </div>
+        <div class="dropdown">
+            <select class="form-select" aria-label="Favorite NHL team selector" formControlName="favoriteTeamId">
+                <ng-container *ngIf="(teamNames | json) != ({} | json)">
+                    <option selected [value]="-1">Favorite NHL Team</option>
+                    <option *ngFor="let team of teamNames.teams" [value]="team.id">
+                        {{ team.name }}
+                    </option>
+                </ng-container>
+            </select>
+        </div>
+        <button type="submit" class="button btn btn-danger" 
+        [disabled]="signupInfo.controls.username.errors || signupInfo.controls.password.errors">
+            Sign up
+        </button>
+    </form>
+    <div class= "vertical-line"></div>
+    <form class="form-parent" [formGroup]="loginInfo" (ngSubmit)="loginSubmitForm()">
+        <h2>Log in</h2>
+        <div class="form-group">
+            <label for="login-usernameInput">Username</label>
+            <span *ngIf="loginInfo.controls.username.invalid && 
+                (loginInfo.controls.username.dirty || loginInfo.controls.username.touched)" class="invalid-form">
+                <label *ngIf="loginInfo.controls.username.errors?.required" class="invalid-form">
+                    A username is required.
+                </label>
+            </span>
+            <label *ngIf="loginInfo.controls.username.valid" class="valid-form">
+                <i class="fas fa-check-circle"></i>
+            </label>
+            <input type="text" class="form-control" id="login-usernameInput"
+                formControlName="username" placeholder="Username">
+        </div>
+        <div class="form-group">
+            <label for="login-passwordInput">Password</label>
+            <span *ngIf="loginInfo.controls.password.invalid && 
+                (loginInfo.controls.password.dirty || loginInfo.controls.password.touched)" class="invalid-form">
+                <label *ngIf="loginInfo.controls.password.errors?.required" class="invalid-form">
+                    A password is required.
+                </label>
+            </span>
+            <label *ngIf="loginInfo.controls.password.valid" class="valid-form">
+                <i class="fas fa-check-circle"></i>
+            </label>
+            <input type="password" class="form-control" id="login-passwordInput"
+                formControlName="password" placeholder="Password">
+        </div>
+        <button type="submit" class="button btn btn-danger" 
+        [disabled]="loginInfo.controls.username.errors || loginInfo.controls.password.errors">Log in</button>
+    </form>
+</div>
+<small class="attribution">Video ©GoPro</small>
+

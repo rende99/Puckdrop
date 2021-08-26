@@ -1,0 +1,62 @@
+@import "../../variables";
+
+.section-title {
+    text-align: center;
+}
+
+.roster-forwards-parent, .roster-defensemen-parent, .roster-goalies-parent {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 30px;
+
+    .column-title {
+        font-weight: 700;
+    }
+}
+
+.roster-forwards, .roster-defensemen, .roster-goalies {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+
+    &-lw, &-c, &-rw {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin: 20px 50px 20px 50px;
+    }
+
+
+}
+
+.card {
+    text-align: center;
+    width: 250px;
+    margin: 8px;
+    box-shadow: 0px 0px 4px 1px $primary;
+    cursor: pointer;
+    
+    &-body {
+        padding: 5px;
+        margin: 0px;
+
+        .jersey-number {
+            font-size: 1.3em;
+            font-weight: 200;
+            
+        }
+
+        .card-title {
+            font-size: 1.3em;
+        }
+
+    }
+}
+
+
+

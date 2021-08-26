@@ -1,0 +1,15 @@
+<h2 class="section-title">Chat</h2>
+<div class="chat-parent">
+    <div class="message-area">
+        <div *ngFor="let msg of messages">
+            <app-chat-bubble [username]="msg.username" [messageContent]="msg.messageContent" [timePosted]="msg.timePosted"></app-chat-bubble>
+        </div>
+    </div>
+    <div class="message-input-area input-group mb-3">
+        <input type="text" class="form-control" placeholder="Enter a message" aria-label="Message content" aria-describedby="button-addon">
+        <div class="input-group-append">
+            <button class="btn btn-primary" type="button" id="button-addon">Send message</button>
+        </div>
+    </div>
+</div>
+

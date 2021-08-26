@@ -1,0 +1,8 @@
+<h2 class="section-title">Upcoming Games</h2>
+<div class="schedule-parent">
+  <ng-container *ngIf="(upcomingSchedule | json) != ({} | json)">
+    <ng-container *ngFor="let date of upcomingSchedule">
+      <app-schedule-card [data]="date" [id]="id"></app-schedule-card>
+    </ng-container>
+  </ng-container>
+</div>

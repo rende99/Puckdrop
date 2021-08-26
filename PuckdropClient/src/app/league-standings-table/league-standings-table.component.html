@@ -1,0 +1,46 @@
+<h2 class="section-title">Standings</h2>
+<div class="table-parent">
+    <div class="btn-group btn-group-toggle" data-toggle="buttons">
+        <label class="btn btn-secondary active" for="League" (click)="setFocus($event)">
+            <input type="radio" name="standingOptions" id="League" autocomplete="off" checked >League
+        </label>
+        <label class="btn btn-secondary" *ngFor="let record of rawStandings.records" for="{{record.division.name}}" (click)="setFocus($event)">
+            <input type="radio" name="standingOptions" id="{{record.division.name}}" autocomplete="off"> {{ record.division.name }}
+        </label>
+    </div>
+    
+    <table class="table table-striped table-dark" *ngIf="(newStandings | json) != ({} | json)">
+        <thead>
+            <tr>
+            <th scope="col">Team</th>
+            <th scope="col">GP</th>
+            <th scope="col">W</th>
+            <th scope="col">L</th>
+            <th scope="col">OTL</th>
+            <th scope="col">Pts</th>
+            <th scope="col">GF</th>
+            <th scope="col">GA</th>
+            <th scope="col">Diff</th>
+            <th scope="col">Strk</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="standing-row" *ngFor="let ranking of newStandings" routerLink="/teams/{{ranking.team.id}}" [state]="{id: ranking.team.id}">
+                <th scope="row">
+                    {{ ranking.team.name }}
+                </th>
+                <td>{{ ranking.gamesPlayed }}</td>
+                <td>{{ ranking.leagueRecord.wins }}</td>
+                <td>{{ ranking.leagueRecord.losses }}</td>
+                <td>{{ ranking.leagueRecord.ot }}</td>
+                <td>{{ ranking.points }}</td>
+                <td>{{ ranking.goalsScored }}</td>
+                <td>{{ ranking.goalsAgainst }}</td>
+                <td>{{ ranking.goalsScored - ranking.goalsAgainst }}</td>
+                <td>{{ ranking.streak.streakCode }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+

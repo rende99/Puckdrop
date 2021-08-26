@@ -1,0 +1,37 @@
+.chat-parent {
+    min-width: 300px;
+    min-height: 400px;
+    background-color: #999;
+    border: 3px solid #444;
+    border-radius: 6px;
+    display: flex;
+    flex-direction: column;
+    justify-self: center;
+    align-self: center;
+    margin: 20px 20% 20px 20%;
+}
+
+.message-area {
+    max-height: 600px;
+    overflow-y: scroll;
+}
+
+.message-input-area {
+    padding: 18px;
+}
+
+.section-title {
+    text-align: center;
+}
+
+.btn {
+    margin-left: 10px;
+}
+
+.table-parent {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 5% 20px 5%;
+}

@@ -1,0 +1,33 @@
+@import "../../variables";
+
+.schedule-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid $secondary;
+    box-shadow: 0px 0px 4px 1px $secondary;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.card-heading {
+    margin: 10px 0 0 0;
+}
+
+.location-word {
+    font-weight: 900;
+}
+
+.game-date {
+    font-weight: 700;
+}
+
+.game-time {
+    font-style: italic;
+}
+
+.opp-img {
+    max-height: 150px;
+    margin: 0px;
+}

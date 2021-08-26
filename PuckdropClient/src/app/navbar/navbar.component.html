@@ -1,0 +1,60 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" routerLink="/home">Puckdrop</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" routerLink="/home">Home</a>
+      </li>
+      <li class="nav-item">
+        <!--Todo: Hardcoded to team with ID=1 (NJD), fix to be reactive in the future-->
+        <a class="nav-link" routerLink="/teams/1">My Team</a>
+      </li>
+      <ng-container *ngIf="(teams | json) != ({} | json)">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle"id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Teams
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" *ngFor="let team of teams.teams" routerLink="/teams/{{team.id}}" [state]="{id: team.id}">
+                {{ team.name }}
+            </a>
+          </div>
+        </li>
+      </ng-container>
+    </ul>
+    <ul class="navbar-nav ms-auto">
+      <li>
+        <a data-toggle="modal" data-target="#logoutModal">
+          <i class="fas fa-sign-out-alt fa-2x"></i>
+        </a>
+      </li>
+      <li>
+        <a routerLink="/settings">
+          <i class="fas fa-cog fa-2x"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<!-- Logout Modal Popup -->
+<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="logoutModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="logoutModalLabel">Are you sure you want to log out?</h5>
+        <a class="close" data-dismiss="modal" aria-label="Close">
+          <i class="fas fa-times fa-lg"></i>
+        </a>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal" routerLink="/login">Yes, log out</button>
+      </div>
+    </div>
+  </div>
+</div>
