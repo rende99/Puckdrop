@@ -1,6 +1,6 @@
 <app-navbar></app-navbar>
 <div class="people-parent" 
-    *ngIf="(stats | json) != ({} | json) && (info | json) != ({} | json)">
+    *ngIf="(stats | json) != ({} | json) && (info | json) != ({} | json); else peopleSkeleton">
     <img class="player-image" [src]="playerImageUrl">
     <h2 class="player-name">{{ info.fullName }}</h2>
     <h5 class="player-team" routerLink="/teams/{{info.currentTeam.id}}" [state]="{id: info.currentTeam.id}">
@@ -138,4 +138,16 @@
         </div>
     </div>
 </div>
+<ng-template #peopleSkeleton>
+    <div class="skeleton">
+        <app-skeleton class="img" [width]="'200px'" [height]="'170px'"></app-skeleton>
+        <div class="stat-line">
+            <app-skeleton class="stat" [width]="'200px'" [height]="'170px'"></app-skeleton>
+            <app-skeleton class="stat" [width]="'200px'" [height]="'170px'"></app-skeleton>
+            <app-skeleton class="stat" [width]="'200px'" [height]="'170px'"></app-skeleton>
+            <app-skeleton class="stat" [width]="'200px'" [height]="'170px'"></app-skeleton>
+            <app-skeleton class="stat" [width]="'200px'" [height]="'170px'"></app-skeleton>
+        </div>
+    </div>
+</ng-template>
 <app-footer></app-footer>

@@ -19,6 +19,7 @@ import { ScheduleCardComponent } from './schedule-card/schedule-card.component';
 import { FooterComponent } from './footer/footer.component';
 import { RosterComponent } from './roster/roster.component';
 import { PeoplePageComponent } from './people-page/people-page.component';
+import { SkeletonComponent } from './skeleton/skeleton.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,6 +36,7 @@ import { PeoplePageComponent } from './people-page/people-page.component';
     FooterComponent,
     RosterComponent,
     PeoplePageComponent,
+    SkeletonComponent,
   ],
   imports: [
     BrowserModule,

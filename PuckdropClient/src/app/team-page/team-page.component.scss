@@ -45,3 +45,27 @@ sup {
     font-size: 70%;
     font-style: italic;
 }
+
+
+.skeleton {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    .img {
+        margin: 100px 0px 40px 0px;
+    }
+
+
+    .schedule {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+
+        .schedule-item {
+            margin: 0px 60px 0px 60px;
+        }
+
+    }
+}

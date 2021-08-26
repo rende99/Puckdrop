@@ -8,8 +8,10 @@
             <input type="radio" name="standingOptions" id="{{record.division.name}}" autocomplete="off"> {{ record.division.name }}
         </label>
     </div>
-    
-    <table class="table table-striped table-dark" *ngIf="(newStandings | json) != ({} | json)">
+    <ng-template #tableSkeleton>
+        <app-skeleton [width]="'1000px'" [height]="'400px'"></app-skeleton>
+    </ng-template>
+    <table class="table table-striped table-dark" *ngIf="(newStandings | json) != ({} | json); else tableSkeleton">
         <thead>
             <tr>
             <th scope="col">Rank</th>
@@ -30,7 +32,7 @@
                     <ng-container *ngIf="tableOpen || i < 8">
                         <td>{{ i }}</td>
                         <th scope="row">
-                            {{ ranking.team.name }}
+                            {{ ranking.team.name }}<sup> {{ ranking.leagueRank }}</sup>
                         </th>
                         <td>{{ ranking.gamesPlayed }}</td>
                         <td>{{ ranking.leagueRecord.wins }}</td>
