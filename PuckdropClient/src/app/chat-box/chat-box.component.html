@@ -1,5 +1,5 @@
 <h2 class="section-title">Chat</h2>
-<div class="chat-parent">
+<div class="chat-parent" *ngIf="(messages | json) != ( {} | json); else chatSkeleton">
     <div class="message-area">
         <div *ngFor="let msg of messages">
             <app-chat-bubble [username]="msg.username" [messageContent]="msg.messageContent" [timePosted]="msg.timePosted"></app-chat-bubble>
@@ -16,4 +16,7 @@
         <small class="characters-left-label">{{ charactersLeft }} characters remaining</small>
     </div>
 </div>
+<ng-template #chatSkeleton>
+    <app-skeleton [width]="'700px'" [height]="'600px'"></app-skeleton>
+</ng-template>
 

@@ -130,5 +130,27 @@
     margin: 15px;
 }
 
+.skeleton {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+    .img {
+        margin: 100px 0px 40px 0px;
+    }
+
+    .stat-line {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+
+        .stat {
+            margin: 0px 20px 0px 20px;
+        }
+
+    }
+}
 
 
