@@ -61,9 +61,10 @@ export class LeagueStandingsTableComponent implements OnInit {
       records.forEach(function (rec) {
         newArr = newArr.concat(rec.teamRecords)
       }); 
-      this.newStandings = newArr.sort((a, b) => (a.points > b.points) ? -1 : 1);
+      this.newStandings = newArr.sort((a, b) => (parseInt(a.leagueRank) > parseInt(b.leagueRank)) ? 1 : -1);
     } else {
-      this.newStandings = this.rawStandings.records[this.focusedDivision].teamRecords.sort((a, b) => (a.leagueRank > b.leagueRank) ? -1 : 1)
+      console.log(this.rawStandings.records[this.focusedDivision].teamRecords);
+      this.newStandings = this.rawStandings.records[this.focusedDivision].teamRecords.sort((a, b) => (parseInt(a.leagueRank) > parseInt(b.leagueRank)) ? 1 : -1)
     }
     console.log(this.newStandings);
   }
