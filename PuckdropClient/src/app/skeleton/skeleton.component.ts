@@ -12,7 +12,6 @@ export class SkeletonComponent implements OnInit {
 
   ngOnInit() {
     this.setCSS();
-    console.log(this.width, this.height);
   }
 
   setCSS() {

@@ -63,7 +63,7 @@ export class LeagueStandingsTableComponent implements OnInit {
       }); 
       this.newStandings = newArr.sort((a, b) => (a.points > b.points) ? -1 : 1);
     } else {
-      this.newStandings = this.rawStandings.records[this.focusedDivision].teamRecords.sort((a, b) => (a.points > b.points) ? -1 : 1)
+      this.newStandings = this.rawStandings.records[this.focusedDivision].teamRecords.sort((a, b) => (a.leagueRank > b.leagueRank) ? -1 : 1)
     }
     console.log(this.newStandings);
   }
