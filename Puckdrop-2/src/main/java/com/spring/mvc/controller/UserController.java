@@ -44,7 +44,7 @@ public class UserController {
     }
     
     @RequestMapping(value= "/messages", method= RequestMethod.POST) 
-    public ResponseEntity<?> postMessage(@RequestBody Message msg) throws IOException {
+    public ResponseEntity<Message> postMessage(@RequestBody Message msg) throws IOException {
     	System.out.println(msg.toString());
     	return new ResponseEntity<Message>(msg, HttpStatus.CREATED);
     }

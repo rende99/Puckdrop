@@ -24,7 +24,6 @@ export class MessagesService {
     let headers = new HttpHeaders({
       'Content-Type':'application/json',
     })
-    console.log(jsonObject)
     return this._http.post(global.APP_URL + '/messages', jsonObject, {'headers': headers} ).pipe(retry(2));
   }
 

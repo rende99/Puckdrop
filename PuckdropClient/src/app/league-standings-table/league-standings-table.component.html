@@ -45,7 +45,8 @@
                 </tr>
         </tbody>
     </table>
-    <button type="button" *ngIf="focusedDivision == -1 && (newStandings | json) != ({} | json)" class="table-toggle-button" (click)="toggleTableOpen()">
+    <button type="button" *ngIf="focusedDivision == -1 && (newStandings | json) != ({} | json)"
+        class="table-toggle-button" (click)="toggleTableOpen()">
         <ng-container *ngIf="!tableOpen">
             <i class="fas fa-caret-down fa-lg"></i>
         </ng-container>
