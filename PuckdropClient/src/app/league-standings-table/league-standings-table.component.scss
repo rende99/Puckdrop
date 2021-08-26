@@ -16,7 +16,7 @@
 }
 
 .table {
-    box-shadow: 0px 0px 2px 1px gray;
+    box-shadow: 0px 0px 3px 1px gray;
 }
 
 .standing-row {
@@ -29,4 +29,18 @@
 
 .btn-group {
     margin: 10px;
+}
+
+.fas {
+    color: white;
+}
+
+.table-toggle-button {
+    background: #222;
+    box-shadow: 0px 0px 4px 2px black;
+    padding: 5px 10px 5px 10px;
+    margin: 0px;
+    margin-top: -23px;
+    border-radius: 10px;
+    z-index: 10;
 }
