@@ -26,6 +26,29 @@
         padding: 0px;
     }
 
+    .relative-div {
+        position: relative;
+
+        .player-info-ul {
+            position: absolute;
+            font-size: 0.9em;
+            min-width: 200px;
+            top: 135px;
+            left: 136px;
+            list-style: none;
+            font-style: italic;
+            font-weight: 100;
+
+            .fas {
+                width: 20px;
+                text-align: center;
+            }
+
+        }
+    }
+
+
+
     .player-team {
         margin: 5px;
         padding: 0px;
