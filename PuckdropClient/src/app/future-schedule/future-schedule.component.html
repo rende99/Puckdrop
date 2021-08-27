@@ -1,8 +1,26 @@
 <h2 class="section-title">Upcoming Games</h2>
 <div class="schedule-parent">
-  <ng-container *ngIf="(upcomingSchedule | json) != ({} | json)">
-    <ng-container *ngFor="let date of upcomingSchedule">
+  <ng-container *ngIf="(schedule | json) != ({} | json)">
+    <ng-container *ngFor="let date of schedule | slice:0:3">
       <app-schedule-card [data]="date" [id]="id"></app-schedule-card>
     </ng-container>
   </ng-container>
 </div>
+<div class="button-div">
+  <button type="button" *ngIf="(schedule | json) != ({} | json)"
+  class="schedule-toggle-button" (click)="toggleFullScheduleOpen()">
+  See full schedule
+    <ng-container *ngIf="!fullScheduleOpen">
+        <i class="fas fa-caret-down fa-lg"></i>
+    </ng-container>
+    <ng-container *ngIf="fullScheduleOpen">
+        <i class="fas fa-caret-up fa-lg"></i>
+    </ng-container>
+  </button>
+</div>
+<div class="future-schedule" *ngIf="fullScheduleOpen">
+  <ng-container *ngFor="let date of schedule | slice:3">
+    <app-schedule-card [data]="date" [id]="id"></app-schedule-card>
+  </ng-container>
+</div>
+

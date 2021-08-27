@@ -10,6 +10,7 @@ export class FutureScheduleComponent implements OnInit, OnChanges {
   @Input() id: number;
   schedule: any = {};
   upcomingSchedule: any = {};
+  fullScheduleOpen: boolean = false;
 
   constructor(private scheduleService: ScheduleService) { }
 
@@ -28,6 +29,10 @@ export class FutureScheduleComponent implements OnInit, OnChanges {
       this.schedule = this.schedule.dates;
       this.upcomingSchedule = this.schedule.slice(0,3);
     });
+  }
+
+  toggleFullScheduleOpen() {
+    this.fullScheduleOpen = !this.fullScheduleOpen;
   }
 
 }
