@@ -50,7 +50,10 @@ public class UserDao {
     	Message m5 = new Message("frank1", "fifth and final message here", new Timestamp(60));
     	Message m6 = new Message("FR2142", "Sixboy", new Timestamp(80));
     	Message m7 = new Message("jackMan", "Seven number message", new Timestamp(100));
-
+    	Message m8 = new Message("george2", "Eighth message here here here here", new Timestamp(110));
+    	Message m9 = new Message("mikeD", "Nine", new Timestamp(120));
+    	Message m10 = new Message("KEast", "X (tenth)", new Timestamp(140));
+    	
     	List<Message> messageList = new ArrayList<Message>();
     	messageList.add(m1);
     	messageList.add(m2);    	
@@ -59,7 +62,10 @@ public class UserDao {
     	messageList.add(m5);
     	messageList.add(m6);
     	messageList.add(m7);
-
+    	messageList.add(m8);
+    	messageList.add(m9);
+    	messageList.add(m10);
+    	
     	return messageList;
 	}
 	
