@@ -1,9 +1,22 @@
 .chat-bubble-parent {
-    background-color: rgb(244, 250, 255);
+    background-color: rgb(41, 41, 44);
     border: black;
     border-radius: 10px;
-    margin: 1em 2em 2em 1em;
+    border-bottom-left-radius: 0px;
+    margin: 1em 2em 1.5em 1em;
     padding: 0.8em;
+
+    .top-row {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+}
+
+.msg {
+    color: white;
+    margin: 3px 0px 0px 0px;
 }
 
 .msg-username {

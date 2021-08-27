@@ -1,5 +1,7 @@
 <div class="chat-bubble-parent">
-    <h5 class="msg msg-username">{{ username }}</h5>
+    <div class="top-row">
+        <h5 class="msg msg-username">{{ username }}</h5>
+        <small><i class="msg msg-time-posted">Posted at: {{ timePosted }}</i></small>
+    </div>
     <p class="msg msg-content">{{ messageContent }}</p>
-    <small><i class="msg msg-time-posted">Posted at: {{ timePosted }}</i></small>
 </div>
