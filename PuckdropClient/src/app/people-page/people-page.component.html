@@ -2,11 +2,20 @@
 <div class="people-parent" 
     *ngIf="(stats | json) != ({} | json) && (info | json) != ({} | json); else peopleSkeleton">
     <ng-container *ngIf="stats; else noData">
-        <img class="player-image" [src]="playerImageUrl">
+        <div class="relative-div">
+            <img class="player-image" [src]="playerImageUrl">
+            <ul class="player-info-ul">
+                <li><i class="fas fa-birthday-cake"></i>{{ getAgeFromDate(info.birthDate) }}</li>
+                <li><i class="fas fa-ruler-vertical"></i>{{ info.height }}</li>
+                <li><i class="fas fa-weight"></i>{{ info.weight }} lbs</li>
+                <li><i class="fas fa-flag"></i>{{ info.birthCity}}, {{ info.birthCountry }}</li>
+            </ul>
+        </div>
         <h2 class="player-name">{{ info.fullName }}</h2>
         <h5 class="player-team" routerLink="/teams/{{info.currentTeam.id}}" [state]="{id: info.currentTeam.id}">
             {{ info.currentTeam.name }} | {{ info.primaryPosition.name }} | #{{ info.primaryNumber }}
         </h5>
+
         <div class="stats-parent" *ngIf="info.primaryPosition.code !== 'G'">
             <div class="stats-primary">
                 <div class="card">
