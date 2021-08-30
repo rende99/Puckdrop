@@ -1,6 +1,6 @@
 <h2 class="section-title">Chat</h2>
 <div class="chat-parent" *ngIf="(messages | json) != ( {} | json); else chatSkeleton">
-    <div class="message-area">
+    <div class="message-area"  #chatBox [scrollTop]="chatBox.scrollHeight">
         <div *ngFor="let msg of messages">
             <app-chat-bubble [username]="msg.username" [messageContent]="msg.messageContent" [timePosted]="msg.timePosted"></app-chat-bubble>
         </div>
