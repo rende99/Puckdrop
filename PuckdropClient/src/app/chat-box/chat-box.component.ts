@@ -29,9 +29,11 @@ export class ChatBoxComponent implements OnInit {
   }
 
   sendMessage() {
-    this.messagesService.sendMessage(this.messageToSend).subscribe(res => {
-      console.log(res);
-    })
+    if(this.messageToSend){
+      this.messagesService.sendMessage(this.messageToSend).subscribe(res => {
+        console.log(res);
+      })
+    }
   }
 
   calculateCharactersLeft(msg) {
