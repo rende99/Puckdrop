@@ -23,16 +23,16 @@ public class UserDao {
         // Employee list.
         List<User> userList = new ArrayList<User>();
  
-        // Creating fake employees to be shown on the angular html page.
+        // Creating fake users to be shown on the angular html page.
         for(int i=101; i<=110; i++) {
  
-            // Creating employee model objects.
+            // Creating users model objects.
         	User myUser = new User();
         	NhlTeam favTeam = new NhlTeam();
         	
         	favTeam.setAbbreviatedName("NJD");
-        	myUser.setName(faker.name().fullName());
-        	myUser.setUsername(faker.name().lastName());
+        	myUser.setUsername(faker.name().username());
+        	myUser.setPassword("fake_pass_123!");
         	myUser.setFavoriteTeam(favTeam);
         	
             // Adding the employee records to the employee list.

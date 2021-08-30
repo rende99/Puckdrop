@@ -3,10 +3,19 @@ package com.spring.mvc.model;
 import java.sql.Timestamp;
 import java.time.LocalDate;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
 public class Message {
 	
+	@NotNull
+	@Size(min=4,max=20)
 	private String username;
+	
+	@NotNull
 	private String messageContent;
+	
+	@NotNull
 	private Timestamp timePosted;
 	
 	public Message() {
