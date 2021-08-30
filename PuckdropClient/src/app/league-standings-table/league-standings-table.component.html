@@ -30,7 +30,7 @@
         <tbody>
                 <tr class="standing-row" *ngFor="let ranking of newStandings; let i = index" routerLink="/teams/{{ranking.team.id}}" [state]="{id: ranking.team.id}">
                     <ng-container *ngIf="tableOpen || i < 8">
-                        <td>{{ i }}</td>
+                        <td>{{ i + 1 }}</td>
                         <th scope="row">
                             {{ ranking.team.name }}<sup> {{ ranking.leagueRank }}</sup>
                         </th>
