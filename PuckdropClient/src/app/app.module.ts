@@ -20,6 +20,7 @@ import { FooterComponent } from './footer/footer.component';
 import { RosterComponent } from './roster/roster.component';
 import { PeoplePageComponent } from './people-page/people-page.component';
 import { SkeletonComponent } from './skeleton/skeleton.component';
+import { F0fPageComponent } from './f0f-page/f0f-page.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,6 +38,7 @@ import { SkeletonComponent } from './skeleton/skeleton.component';
     RosterComponent,
     PeoplePageComponent,
     SkeletonComponent,
+    F0fPageComponent,
   ],
   imports: [
     BrowserModule,

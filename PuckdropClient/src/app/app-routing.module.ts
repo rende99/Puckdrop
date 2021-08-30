@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { F0fPageComponent } from './f0f-page/f0f-page.component';
 import { HomeComponent } from './home/home.component';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { PeoplePageComponent } from './people-page/people-page.component';
@@ -13,6 +14,7 @@ const routes: Routes = [
   { path: 'login', component: LoginPageComponent },
   { path: 'settings', component: SettingsPageComponent },
   { path: 'people/:id', component: PeoplePageComponent },
+  {path: '**', pathMatch: 'full', component: F0fPageComponent}
 ];
 
 @NgModule({
