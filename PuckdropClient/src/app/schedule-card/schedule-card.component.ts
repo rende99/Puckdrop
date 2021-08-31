@@ -10,25 +10,22 @@ import  *  as  teamMediaImport  from  '../../assets/team-media.json';
 export class ScheduleCardComponent implements OnInit {
   @Input() data: any;
   @Input() id: number;
+  @Input() a_id: number;
+  @Input() isSingleCard: boolean = true;
   teamLocationWord: string;  // Either "at" or "vs" for away and home, respectively.
-  gameTime: string; // Formatted hh:mm string for readable game time.
 
 
   constructor(private activeRoute: ActivatedRoute) { }
 
   ngOnInit() {
-    this.activeRoute.params.subscribe(_ => {
-      this.teamLocationWord = this.isHomeGame() ? "vs" : "at";
-      this.gameTime = this.formatGameTime();
-    });
   }
 
   isHomeGame() {
     return this.data.games[0].teams.home.team.id == this.id;
   }
 
-  formatGameTime() {
-    var gameDate = new Date(this.data.games[0].gameDate);
+  formatGameTime(d: Date) {
+    var gameDate = new Date(d);
     var h = gameDate.getHours();
     var ampm = h >= 12 ? "pm" : "am";
     h = h % 12;
@@ -37,13 +34,13 @@ export class ScheduleCardComponent implements OnInit {
     return `${h}:${m}${ampm}`
   }
 
-  getOppLogo(oppId: number) {
-    var oppMedia = (teamMediaImport as any).default.find(x => {return x.id == oppId});
-    return `../../assets/img/nhl-img/${oppMedia['img-url']}`;
+  getLogoFromId(id: number) {
+    var media = (teamMediaImport as any).default.find(x => {return x.id == id});
+    return `../../assets/img/nhl-img/${media['img-url']}`;
   }
 
   getOppId() {
-    return this.teamLocationWord === "at" ? this.data.games[0].teams.home.team.id : this.data.games[0].teams.away.team.id;
+    return this.isHomeGame() ? this.data.games[0].teams.away.team.id : this.data.games[0].teams.home.team.id;
   }
 
 }

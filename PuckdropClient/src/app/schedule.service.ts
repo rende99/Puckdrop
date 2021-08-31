@@ -13,4 +13,9 @@ export class ScheduleService {
   getTeamSchedule(teamId: number) {
     return this._http.get(`${global.APP_URL}/schedule/${teamId}`).pipe(retry(2));
   }
+
+  getScheduleBetweenDates(start: string, end: string) {
+    return this._http.get(`${global.APP_URL}/schedule/${start}/${end}`).pipe(retry(2));
+  }
+
 }
