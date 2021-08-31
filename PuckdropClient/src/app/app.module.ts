@@ -21,6 +21,8 @@ import { RosterComponent } from './roster/roster.component';
 import { PeoplePageComponent } from './people-page/people-page.component';
 import { SkeletonComponent } from './skeleton/skeleton.component';
 import { F0fPageComponent } from './f0f-page/f0f-page.component';
+import { GameCenterPageComponent } from './game-center-page/game-center-page.component';
+import { LeagueGamesComponent } from './league-games/league-games.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -39,6 +41,8 @@ import { F0fPageComponent } from './f0f-page/f0f-page.component';
     PeoplePageComponent,
     SkeletonComponent,
     F0fPageComponent,
+    GameCenterPageComponent,
+    LeagueGamesComponent,
   ],
   imports: [
     BrowserModule,

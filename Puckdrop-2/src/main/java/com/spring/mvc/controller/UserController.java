@@ -89,6 +89,11 @@ public class UserController {
     	LocalDate now = LocalDate.now();
     	LocalDate end = now.plusYears(1);
     	return apiService.consumeEndpoint("/schedule?teamId=", id + "&startDate=" + now + "&endDate=" + end);
+    }
+    
+    @RequestMapping(value= "/schedule/{sd}/{ed}", method= RequestMethod.GET) 
+    public String getScheduleBetweenDates(@PathVariable("sd") String sd, @PathVariable("ed") String ed) throws IOException {
+    	return apiService.consumeEndpoint("/schedule?startDate=", sd + "&endDate=" + ed);
     	
     }
     

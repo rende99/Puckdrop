@@ -1,10 +1,38 @@
-<div class="schedule-card" style="width: 18rem;" routerLink="/teams/{{getOppId()}}" [state]="{id: getOppId()}">
-    <div class="card-heading">
-        <h3 class="location-word">{{ teamLocationWord | uppercase }}</h3>
+<ng-container *ngIf="isSingleCard">
+    <div class="schedule-card" style="width: 18rem;" routerLink="/teams/{{getOppId()}}" [state]="{id: getOppId()}">
+        <div class="card-heading">
+            <h3 class="location-word">{{ this.isHomeGame() ? "VS" : "AT"}}</h3>
+        </div>
+        <img class="opp-img" [src]="getLogoFromId(getOppId())" alt="Opponent Team Logo">
+        <div class="card-content">
+            <h4 class="game-date">{{ data.date.slice(-5).replace("-","/") }}</h4>
+            <h6 class="game-time">{{ formatGameTime(data.games[0].gameDate) }}</h6>
+        </div>
     </div>
-    <img class="opp-img" [src]="getOppLogo(getOppId())" alt="Opponent Logo">
-    <div class="card-content">
-        <h4 class="game-date">{{ data.date.slice(-5).replace("-","/") }}</h4>
-        <p class="game-time">{{ this.gameTime }}</p>
+</ng-container>
+<ng-container *ngIf="!isSingleCard">
+    <div class="schedule-card" style="width: 24rem;">
+        <div class="matchup">
+            <div class="team-spot">
+                <img class="opp-img" [src]="getLogoFromId(data.teams.away.team.id)" alt="Opponent Team Logo">
+                <p> {{data.teams.away.leagueRecord.wins}} -
+                    {{data.teams.away.leagueRecord.losses}} -
+                    {{data.teams.away.leagueRecord.ot}}
+                </p>
+            </div>
+            <h1>X</h1>
+            <div class="team-spot">
+                <img class="home-img" [src]="getLogoFromId(data.teams.home.team.id)" alt="Home Team Logo">
+                <p> {{data.teams.home.leagueRecord.wins}} -
+                    {{data.teams.home.leagueRecord.losses}} -
+                    {{data.teams.home.leagueRecord.ot}}
+                </p>
+            </div>
+        </div>
+        <div class="card-content">
+            <h6 class="game-time larger">{{ formatGameTime(data.gameDate) }}</h6>
+        </div>
     </div>
-</div>
+</ng-container>
+
+

@@ -1,0 +1,5 @@
+<app-navbar></app-navbar>
+<h1 class="page-title">Game Center</h1>
+<h4 class="page-subtitle">Games for today: {{ this.date.replaceAll("-", "/") }}</h4>
+<app-league-games [today]="this.date"></app-league-games>
+<app-footer></app-footer>

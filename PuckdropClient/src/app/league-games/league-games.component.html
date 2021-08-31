@@ -1,0 +1,12 @@
+<ng-container *ngIf="( games | json ) != ( {} | json )">
+    <div *ngIf="games.length > 0; else noGames" class="card-collection">
+        <ng-container *ngFor="let game of games; let i = index">
+            <app-schedule-card [data]="game" [id]="getHomeId(game.gamePk)"
+                [a_id]="getAwayId(game.gamePk)" [isSingleCard]="false">
+            </app-schedule-card>
+        </ng-container> 
+    </div>
+    <ng-template #noGames>
+        <h1 class="no-games-label">No games today!</h1>
+    </ng-template>
+</ng-container>
