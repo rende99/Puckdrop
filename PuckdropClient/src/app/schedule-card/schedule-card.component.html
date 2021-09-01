@@ -1,5 +1,5 @@
 <ng-container *ngIf="isSingleCard">
-    <div class="schedule-card" style="width: 18rem;" routerLink="/teams/{{getOppId()}}" [state]="{id: getOppId()}">
+    <div class="schedule-card" style="width: 18rem;" routerLink="/teams/{{getOppId()}}" [id]="getOppId()">
         <div class="card-heading">
             <h3 class="location-word">{{ this.isHomeGame() ? "VS" : "AT"}}</h3>
         </div>
@@ -11,7 +11,7 @@
     </div>
 </ng-container>
 <ng-container *ngIf="!isSingleCard">
-    <div class="schedule-card" style="width: 24rem;">
+    <div class="schedule-card" style="width: 24rem;" routerLink="/games/{{data.gamePk}}" [id]="data.gamePk">
         <div class="matchup">
             <div class="team-spot">
                 <img class="opp-img" [src]="getLogoFromId(data.teams.away.team.id)" alt="Opponent Team Logo">
@@ -20,7 +20,7 @@
                     {{data.teams.away.leagueRecord.ot}}
                 </p>
             </div>
-            <h1>X</h1>
+            <div class= "vertical-line"></div>
             <div class="team-spot">
                 <img class="home-img" [src]="getLogoFromId(data.teams.home.team.id)" alt="Home Team Logo">
                 <p> {{data.teams.home.leagueRecord.wins}} -

@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { F0fPageComponent } from './f0f-page/f0f-page.component';
 import { GameCenterPageComponent } from './game-center-page/game-center-page.component';
+import { GamePageComponent } from './game-page/game-page.component';
 import { HomeComponent } from './home/home.component';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { PeoplePageComponent } from './people-page/people-page.component';
@@ -16,6 +17,7 @@ const routes: Routes = [
   { path: 'settings', component: SettingsPageComponent },
   { path: 'people/:id', component: PeoplePageComponent },
   { path: 'games', component: GameCenterPageComponent },
+  { path: 'games/:id', component: GamePageComponent },
   {path: '**', pathMatch: 'full', component: F0fPageComponent}
 ];
 

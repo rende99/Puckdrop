@@ -11,7 +11,7 @@ import { TeamNamesService } from '../team-names.service';
 export class NavbarComponent implements OnInit {
   teams: any = {};
 
-  constructor(private _http: HttpClient, private teamNamesService: TeamNamesService) { }
+  constructor(private teamNamesService: TeamNamesService) { }
 
   ngOnInit() {
     this.fetchTeams();

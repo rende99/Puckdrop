@@ -23,6 +23,7 @@ import { SkeletonComponent } from './skeleton/skeleton.component';
 import { F0fPageComponent } from './f0f-page/f0f-page.component';
 import { GameCenterPageComponent } from './game-center-page/game-center-page.component';
 import { LeagueGamesComponent } from './league-games/league-games.component';
+import { GamePageComponent } from './game-page/game-page.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -43,6 +44,7 @@ import { LeagueGamesComponent } from './league-games/league-games.component';
     F0fPageComponent,
     GameCenterPageComponent,
     LeagueGamesComponent,
+    GamePageComponent,
   ],
   imports: [
     BrowserModule,

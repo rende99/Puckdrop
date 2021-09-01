@@ -1,0 +1,94 @@
+<app-navbar></app-navbar>
+<h1 class="page-title">Game Information</h1>
+<div class="page-header" *ngIf="(gameInfo | json) != ({} | json)">
+    <div class="box-header">
+        <div class="side-block">
+            <h6 class="team-name">{{ gameInfo.gameData.teams.away.name }}</h6>
+            <img class="team-logo" [src]="getLogoFromId(gameInfo.gameData.teams.away.id)"/>
+            <h1 class="score">{{ gameInfo.liveData.linescore.teams.away.goals }}</h1>
+            <h6 class="sog">Shots: {{ gameInfo.liveData.linescore.teams.away.shotsOnGoal }}</h6>
+        </div>
+        <div class="center-block">
+            <h2>{{ gameInfo.liveData.linescore.currentPeriodTimeRemaining | uppercase}}</h2>
+        </div>
+        <div class="side-block">
+            <h6 class="team-name">{{ gameInfo.gameData.teams.home.name }}</h6>
+            <img class="team-logo" [src]="getLogoFromId(gameInfo.gameData.teams.home.id)"/>
+            <h1 class="score">{{ gameInfo.liveData.linescore.teams.home.goals }}</h1>
+            <h6 class="sog">Shots: {{ gameInfo.liveData.linescore.teams.home.shotsOnGoal }}</h6>
+        </div>
+    </div>
+    <div class="live-feed">
+        <h1 class="section-header">Live Updates</h1>
+        <div class="event-list-parent">
+            <h4 class="update-list-item" *ngFor="let play of gameInfo.liveData.plays.allPlays.reverse()">
+                <b>{{play.about.ordinalNum}} {{play.about.periodTime}}</b>    | <i>{{play.result.event}}</i>: {{play.result.description}}
+            </h4>
+        </div>
+    </div>
+    <div class="live-data">
+        <h1 class="section-header">Game Stats</h1>
+        <table class="table table-striped table-dark">
+            <thead>
+                <tr>
+                    <th class="c1" scope="col">Stat</th>
+                    <th scope="col">{{ gameInfo.gameData.teams.away.name }}</th>
+                    <th scope="col">{{ gameInfo.gameData.teams.home.name }}</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th class="c1" scope="row">Shots</th>
+                    <td>{{ gameInfo.liveData.boxscore.teams.away.teamStats.teamSkaterStats.shots }}</td>
+                    <td>{{ gameInfo.liveData.boxscore.teams.home.teamStats.teamSkaterStats.shots }}</td>
+                </tr>
+                <tr>
+                    <th class="c1" scope="row">Blocks</th>
+                    <td>{{ gameInfo.liveData.boxscore.teams.away.teamStats.teamSkaterStats.blocked }}</td>
+                    <td>{{ gameInfo.liveData.boxscore.teams.home.teamStats.teamSkaterStats.blocked }}</td>
+                </tr>
+                <tr>
+                    <th class="c1" scope="row">Hits</th>
+                    <td>{{ gameInfo.liveData.boxscore.teams.away.teamStats.teamSkaterStats.hits }}</td>
+                    <td>{{ gameInfo.liveData.boxscore.teams.home.teamStats.teamSkaterStats.hits }}</td>
+                </tr>
+                <tr>
+                    <th class="c1" scope="row">Takeaways</th>
+                    <td>{{ gameInfo.liveData.boxscore.teams.away.teamStats.teamSkaterStats.takeaways }}</td>
+                    <td>{{ gameInfo.liveData.boxscore.teams.home.teamStats.teamSkaterStats.takeaways }}</td>
+                </tr>
+                <tr>
+                    <th class="c1" scope="row">Giveaways</th>
+                    <td>{{ gameInfo.liveData.boxscore.teams.away.teamStats.teamSkaterStats.giveaways }}</td>
+                    <td>{{ gameInfo.liveData.boxscore.teams.home.teamStats.teamSkaterStats.giveaways }}</td>
+                </tr>
+                <tr>
+                    <th class="c1" scope="row">FO%</th>
+                    <td>{{ gameInfo.liveData.boxscore.teams.away.teamStats.teamSkaterStats.faceOffWinPercentage/100 | percent }}</td>
+                    <td>{{ gameInfo.liveData.boxscore.teams.home.teamStats.teamSkaterStats.faceOffWinPercentage/100 | percent }}</td>
+                </tr>
+                <tr>
+                    <th class="c1" scope="row">PP</th>
+                    <td>{{ gameInfo.liveData.boxscore.teams.away.teamStats.teamSkaterStats.powerPlayOpportunities }}</td>
+                    <td>{{ gameInfo.liveData.boxscore.teams.home.teamStats.teamSkaterStats.powerPlayOpportunities }}</td>
+                </tr>
+                <tr>
+                    <th class="c1" scope="row">PPG</th>
+                    <td>{{ gameInfo.liveData.boxscore.teams.away.teamStats.teamSkaterStats.powerPlayGoals }}</td>
+                    <td>{{ gameInfo.liveData.boxscore.teams.home.teamStats.teamSkaterStats.powerPlayGoals }}</td>
+                </tr>
+                <tr>
+                    <th class="c1" scope="row">PP%</th>
+                    <td>{{ gameInfo.liveData.boxscore.teams.away.teamStats.teamSkaterStats.powerPlayPercentage/100 | percent }}</td>
+                    <td>{{ gameInfo.liveData.boxscore.teams.home.teamStats.teamSkaterStats.powerPlayPercentage/100 | percent }}</td>
+                </tr>
+                <tr>
+                    <th class="c1" scope="row">PIM</th>
+                    <td>{{ gameInfo.liveData.boxscore.teams.away.teamStats.teamSkaterStats.pim }}</td>
+                    <td>{{ gameInfo.liveData.boxscore.teams.home.teamStats.teamSkaterStats.pim }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<app-footer></app-footer>

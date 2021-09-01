@@ -9,7 +9,7 @@ import  *  as  teamMediaImport  from  '../../assets/team-media.json';
   styleUrls: ['./team-page.component.scss']
 })
 export class TeamPageComponent implements OnInit {
-  id = history.state.id;
+  @Input() id;
   teamInfo: any = {};
   teamMedia: any = {};
   
