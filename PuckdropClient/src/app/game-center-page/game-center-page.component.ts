@@ -6,7 +6,7 @@ import { DatePipe } from '@angular/common';
   styleUrls: ['./game-center-page.component.scss']
 })
 export class GameCenterPageComponent implements OnInit {
-  date: string = new Date().toISOString().split('T')[0];
+  date: string = new Date("February 1, 2019").toISOString().split('T')[0];
   constructor() { }
 
   ngOnInit() {

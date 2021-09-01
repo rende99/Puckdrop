@@ -32,6 +32,16 @@ public class UserController {
     @Autowired
     ApiService apiService;
     
+    @RequestMapping(value= "/", method= RequestMethod.GET) 
+    public String PlainOld() {
+    	return "root!";
+    }
+    
+    @RequestMapping(value= "/games/{game_id}", method= RequestMethod.GET) 
+    public String getGameInfo(@PathVariable("game_id") String game_id) throws IOException {
+    	return apiService.consumeEndpoint("/game", "/" + game_id + "/feed/live");
+    }
+    
     @RequestMapping(value= "/users", method= RequestMethod.GET) 
     public List<User> getAllUsers() {
     	//return "HI!";
@@ -47,11 +57,6 @@ public class UserController {
     public ResponseEntity<Message> postMessage(@RequestBody Message msg) throws IOException {
     	System.out.println(msg.toString());
     	return new ResponseEntity<Message>(msg, HttpStatus.CREATED);
-    }
-    
-    @RequestMapping(value= "/", method= RequestMethod.GET) 
-    public String PlainOld() {
-    	return "root!";
     }
     
     @RequestMapping(value= "/teams", method= RequestMethod.GET) 

@@ -1,0 +1,109 @@
+.page-title {
+    text-align: center;
+    font-size: 5rem;
+    font-weight: 900;
+    margin: 5rem 0 1rem 0;
+}
+
+.page-header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .section-header {
+        margin: 2rem;
+    }
+
+
+    .box-header {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+    
+        background-color: rgb(41, 41, 44);
+        color: white;
+        border-radius: 10px;
+        margin: 5rem;
+        padding: 3rem;
+    
+        .side-block {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin: 0px 2rem 0px 2rem;
+
+            .team-name {
+                font-size: 1.8rem;
+                text-align: center;
+            }
+    
+            .team-logo {
+                width: 15rem;
+                height: 15rem;
+                object-fit: contain;
+            }
+    
+            .score {
+                font-size: 5rem;
+                justify-self: flex-end;
+            }
+    
+            .sog {
+                font-weight: 300;
+            }
+    
+        }
+    
+        .center-block {
+            margin: 4rem;
+            font-size: 4rem;
+            text-align: center;
+        }
+    }
+
+    .live-feed {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        align-self: center;
+
+        .event-list-parent {
+            max-height: 140px;
+            overflow-y: scroll;
+            box-shadow: 0px 0px 2px 1px #ececec;
+            border-radius: 5px;
+            
+            .update-list-item {
+                text-align: left;
+                font-weight: 200;
+                font-size: 1.4rem;
+            }
+
+        }
+    }
+
+    .live-data {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        min-width: 40%;
+        margin-bottom: 3rem;
+
+        .table {
+            text-align: center;
+            box-shadow: 0px 0px 3px 1px gray;
+
+            th.c1 {
+                text-align: left;
+            }
+        }
+    }
+}
+
+
+

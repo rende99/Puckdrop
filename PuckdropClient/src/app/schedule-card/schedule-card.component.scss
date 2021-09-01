@@ -31,14 +31,15 @@
 }
 
 .opp-img, .home-img {
-    max-height: 150px;
+    width: 120px;
     margin: 0px;
+    object-fit: contain;
 }
 
 .matchup {
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
 
     .team-spot {
@@ -60,11 +61,10 @@
 
 
 
-    h1 {
-        margin: 1rem;
-        padding: 0rem;
-        font-weight: 200;
-        font-size: 1.7rem;
+    .vertical-line {
+        border-left: 1px solid #ccc;
+        height: 130px;
+        margin: 5px 15px 5px 15px;
     }
 }
 
