@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import * as global from '../../global'
 import { TeamNamesService } from '../team-names.service';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-navbar',
@@ -11,7 +12,7 @@ import { TeamNamesService } from '../team-names.service';
 export class NavbarComponent implements OnInit {
   teams: any = {};
 
-  constructor(private teamNamesService: TeamNamesService) { }
+  constructor(private teamNamesService: TeamNamesService, private cookieService: CookieService) { }
 
   ngOnInit() {
     this.fetchTeams();
@@ -22,6 +23,15 @@ export class NavbarComponent implements OnInit {
     this.teamNamesService.getTeamNames().subscribe(res => {
       this.teams = res;
     });
+  }
+
+  getMyTeamLink() {
+    var cookieFavTeamId: string = this.cookieService.get('favoriteTeamId');
+    if(cookieFavTeamId != '-1'){
+      return `/teams/${cookieFavTeamId}`
+    }else{
+      return '';
+    }
   }
 
 

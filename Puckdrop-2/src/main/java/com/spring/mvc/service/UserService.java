@@ -12,16 +12,15 @@ import com.spring.mvc.model.Message;
 import com.spring.mvc.model.User;
  
 @Service
-public class UserService {
+public interface UserService {
  
-    @Autowired
-    UserDao userdao;
+	public void saveUser(User user);
     
-    public List<User> getAllUsers() {
-        return userdao.getAllUsersFromDb();
-    }
+    public List<User> findAllUsers();
     
+    /*
     public List<Message> getAllMessages() {
         return userdao.getAllMessagesFromDb();
     }
+    */
 }

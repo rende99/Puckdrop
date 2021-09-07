@@ -24,6 +24,7 @@ import { F0fPageComponent } from './f0f-page/f0f-page.component';
 import { GameCenterPageComponent } from './game-center-page/game-center-page.component';
 import { LeagueGamesComponent } from './league-games/league-games.component';
 import { GamePageComponent } from './game-page/game-page.component';
+import { CookieService } from 'ngx-cookie-service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -54,7 +55,8 @@ import { GamePageComponent } from './game-page/game-page.component';
     ReactiveFormsModule,
   ],
   providers: [
-    StandingsService
+    StandingsService,
+    [CookieService]
   ],
   bootstrap: [AppComponent]
 })

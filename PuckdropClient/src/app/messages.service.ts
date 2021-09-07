@@ -3,21 +3,24 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import * as global from '../global'
 import { resolve } from 'url';
 import { retry } from 'rxjs/operators';
+import { CookieService } from 'ngx-cookie-service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MessagesService {
 
-  constructor(private _http: HttpClient) { }
+  constructor(private _http: HttpClient, private cookieService: CookieService) { }
 
   getMessages() {
     return this._http.get(global.APP_URL + '/messages').pipe(retry(2));
   }
 
-  sendMessage(str) {
+  sendMessage(str, teamId) {
+    var userToUse = this.cookieService.get('username') ? this.cookieService.get('username') : "FAKE_USERNAME";
     var jsonObject = JSON.stringify({
-      username: "FAKE_USERNAME",
+      chatId: teamId,
+      username: userToUse,
       messageContent: str,
       timePosted: Date.now()
     });

@@ -30,7 +30,7 @@ export class ChatBoxComponent implements OnInit {
 
   sendMessage() {
     if(this.messageToSend){
-      this.messagesService.sendMessage(this.messageToSend).subscribe(res => {
+      this.messagesService.sendMessage(this.messageToSend, -1).subscribe(res => {
         console.log(res);
       })
     }

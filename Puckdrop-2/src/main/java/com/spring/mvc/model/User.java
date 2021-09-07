@@ -1,27 +1,46 @@
 package com.spring.mvc.model;
 
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
+
+@Entity
+@Table(name="USERS")
 public class User {
 	
-	@NotNull
-	@Size(min=4, max=20)
+	@Id
+	@Column(name="id")
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private int id;
+
+	@Column(name="USERNAME")
 	private String username;
 	
-	@NotNull
-	@Size(min=8, max=20)
+
+	@Column(name="PASSWORD")
 	private String password;
 	
-	@NotNull
-	private NhlTeam favoriteTeam;
+	@Column(name="FAVORITE_TEAM_ID")
+	private int favoriteTeamId;
+	
+    public User() {
+        super();
+    }
 	
 	public String getUsername() {
 		return this.username;
 	}
 	
-	public NhlTeam getFavoriteTeam() {
-		return this.favoriteTeam;
+	public String getPassword() {
+		return this.password;
+	}
+	
+	public int getFavoriteTeamId() {
+		return this.favoriteTeamId;
 	}
 	
 	public void setUsername(String username) {
@@ -32,8 +51,8 @@ public class User {
 		this.password = password;
 	}
 	
-	public void setFavoriteTeam(NhlTeam favoriteTeam) {
-		this.favoriteTeam = favoriteTeam;
+	public void setFavoriteTeamId(int favoriteTeamId) {
+		this.favoriteTeamId = favoriteTeamId;
 	}
 	
 }

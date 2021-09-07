@@ -1,12 +1,10 @@
 package com.spring.mvc.model;
 
-import javax.validation.constraints.NotNull;
 
 public class NhlTeam {
 	
 	private String abbreviatedName;
 	
-	@NotNull
 	private Integer id;
 	
 	public String getAbbreviatedName() {

@@ -3,33 +3,42 @@ package com.spring.mvc.model;
 import java.sql.Timestamp;
 import java.time.LocalDate;
 
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
+@Entity
+@Table(name="MESSAGES")
 public class Message {
+
+	@Id
+	@Column(name="id")
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private int id;
 	
-	@NotNull
-	@Size(min=4,max=20)
+	@Column(name="CHAT_ID")
+	private int chatId;
+	
+	@Column(name="USERNAME")
 	private String username;
 	
-	@NotNull
+	@Column(name="MESSAGE_CONTENT")
 	private String messageContent;
 	
-	@NotNull
+	@Column(name="TIME_POSTED")
 	private Timestamp timePosted;
 	
 	public Message() {
-		this.username = "DEFAULT_USERNAME";
-		this.messageContent = "MSG_CONTENT";
-		this.timePosted = Timestamp.valueOf("2000-01-01 00:00:00");
-	}
-	
-	public Message(String username, String messageContent, Timestamp timePosted) {
-		this.username = username;
-		this.messageContent = messageContent;
-		this.timePosted = timePosted;
+		super();
 	}
 
+	public int getChatId() {
+		return chatId;
+	}
+	
 	public String getUsername() {
 		return username;
 	}
@@ -42,8 +51,24 @@ public class Message {
 		return timePosted;
 	}
 	
+	public void setChatId(int chatId) {
+		this.chatId = chatId;
+	}
+	
+	public void setUsername(String username) {
+		this.username = username;
+	}
+	
+	public void setMessageContent(String messageContent) {
+		this.messageContent = messageContent;
+	}
+	
+	public void setTimePosted(Timestamp timePosted) {
+		this.timePosted = timePosted;
+	}
+	
 	public String toString() {
-		return "username: " + this.getUsername() + " | content: " + this.getMessageContent()
+		return "chat_id: " + this.getChatId() + " | username: " + this.getUsername() + " | content: " + this.getMessageContent()
 			+ " | timePosted: " + this.getTimePosted();
 	}
 		
