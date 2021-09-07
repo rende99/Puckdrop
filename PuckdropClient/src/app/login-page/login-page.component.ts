@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { LoginService } from '../login.service';
 import { TeamNamesService } from '../team-names.service';
+import { CookieService } from 'ngx-cookie-service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login-page',
@@ -18,7 +21,13 @@ export class LoginPageComponent implements OnInit {
     username: new FormControl('', [Validators.required]),
     password: new FormControl('', [Validators.required]),
   })
-  constructor(private teamNamesService: TeamNamesService) { }
+
+  constructor(
+    private teamNamesService: TeamNamesService,
+    private loginService: LoginService,
+    private cookieService: CookieService,
+    private router: Router
+  ) { }
 
   ngOnInit() {
     this.teamNamesService.getTeamNames().subscribe(res => {
@@ -29,15 +38,40 @@ export class LoginPageComponent implements OnInit {
   }
 
   signupSubmitForm() {
+    var jsonObject = JSON.stringify({
+        username: this.signupInfo.controls.username.value,
+        password: this.signupInfo.controls.password.value,
+        favoriteTeamId: this.signupInfo.controls.favoriteTeamId.value
+    })
+    this.loginService.postSignup(jsonObject).subscribe(res => {
+      var response: any = res;
+      console.log(response);
+      this.cookieService.set('username', response.username);
+      this.cookieService.set('favoriteTeamId', response.favoriteTeamId);
+      this.router.navigate(['/home']);
+    })
+
     console.log(`Signup process triggered with the following information: 
     username: ${this.signupInfo.controls.username.value}
     password: ${this.signupInfo.controls.password.value}
     favoriteTeamId: ${this.signupInfo.controls.favoriteTeamId.value}
     `)
-
   }
 
   loginSubmitForm() {
+    var jsonObject = JSON.stringify({
+      username: this.loginInfo.controls.username.value,
+      password: this.loginInfo.controls.password.value
+    })
+
+    this.loginService.postLogin(jsonObject).subscribe(res => {
+      console.log(res);
+      var response: any = res;
+      this.cookieService.set('username', response.username);
+      this.cookieService.set('favoriteTeamId', response.favoriteTeamId);
+      this.router.navigate(['/home']);
+    })
+
     console.log(`Login process triggered with the following information: 
     username: ${this.loginInfo.controls.username.value}
     password: ${this.loginInfo.controls.password.value}

@@ -1,7 +1,7 @@
 <div class="chat-bubble-parent">
     <div class="top-row">
         <h5 class="msg msg-username">{{ username }}</h5>
-        <small><i class="msg msg-time-posted">Posted at: {{ timePosted }}</i></small>
+        <small><i class="msg msg-time-posted">{{ timeToString(timePosted) }}</i></small>
     </div>
     <p class="msg msg-content">{{ messageContent }}</p>
 </div>

@@ -15,4 +15,9 @@ export class ChatBubbleComponent implements OnInit {
   ngOnInit() {
   }
 
+  timeToString(rawTime: number) {
+    var d = Math.floor((new Date().getTime() - rawTime)/1000);
+    return `${d} seconds ago`;
+  }
+
 }

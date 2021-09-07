@@ -20,21 +20,46 @@ import org.springframework.web.bind.annotation.RestController;
 import com.spring.mvc.model.Message;
 import com.spring.mvc.model.User;
 import com.spring.mvc.service.ApiService;
+import com.spring.mvc.service.MessageService;
 import com.spring.mvc.service.UserService;
 
 @RestController
+@RequestMapping("/")
 @CrossOrigin
 public class UserController {
 	
     @Autowired
     UserService userService;
+    
+    @Autowired
+    MessageService messageService;
 
     @Autowired
     ApiService apiService;
     
     @RequestMapping(value= "/", method= RequestMethod.GET) 
-    public String PlainOld() {
-    	return "root!";
+    public List<User> PlainOld() {
+    	User u = new User();
+    	u.setUsername("username111");
+    	u.setPassword("pass1122");
+    	System.out.println(u.getUsername());
+    	List<User> allUsers = userService.findAllUsers();
+    	System.out.println(allUsers);
+    	return userService.findAllUsers();
+    }
+    
+    @RequestMapping(value= "/signup", method= RequestMethod.POST) 
+    public ResponseEntity<User> signup(@RequestBody User user) throws IOException {
+    	System.out.println(user.toString());
+    	userService.saveUser(user);
+    	return new ResponseEntity<User>(user, HttpStatus.CREATED);
+    }
+    
+    @RequestMapping(value= "/login", method= RequestMethod.GET) 
+    public ResponseEntity<User> login(@RequestBody User user) throws IOException {
+    	System.out.println(user.toString());
+    	userService.saveUser(user);
+    	return new ResponseEntity<User>(user, HttpStatus.NOT_ACCEPTABLE);
     }
     
     @RequestMapping(value= "/games/{game_id}", method= RequestMethod.GET) 
@@ -45,17 +70,20 @@ public class UserController {
     @RequestMapping(value= "/users", method= RequestMethod.GET) 
     public List<User> getAllUsers() {
     	//return "HI!";
-        return userService.getAllUsers();
+        return userService.findAllUsers();
     }
     
     @RequestMapping(value= "/messages", method= RequestMethod.GET) 
     public List<Message> getMessages() throws IOException {
-    	return userService.getAllMessages();
+    	//return "fake message list";
+    	System.out.println("Getting all messages...");
+    	return messageService.getAllMessages();
     }
     
     @RequestMapping(value= "/messages", method= RequestMethod.POST) 
     public ResponseEntity<Message> postMessage(@RequestBody Message msg) throws IOException {
     	System.out.println(msg.toString());
+    	messageService.postMessage(msg);
     	return new ResponseEntity<Message>(msg, HttpStatus.CREATED);
     }
     

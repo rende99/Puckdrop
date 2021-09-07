@@ -1,6 +1,11 @@
 com\spring\mvc\controller\UserController.class
-com\spring\mvc\dao\UserDao.class
+com\spring\mvc\service\UserServiceImpl.class
+com\spring\mvc\dao\AbstractDao.class
 com\spring\mvc\model\NhlTeam.class
 com\spring\mvc\service\UserService.class
+com\spring\mvc\config\HibernateConfig.class
+com\spring\mvc\dao\UserDao.class
+com\spring\mvc\model\Message.class
 com\spring\mvc\model\User.class
 com\spring\mvc\service\ApiService.class
+com\spring\mvc\dao\UserDaoImpl.class
