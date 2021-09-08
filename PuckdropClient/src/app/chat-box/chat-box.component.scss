@@ -1,6 +1,5 @@
 .chat-parent {
     min-width: 300px;
-    min-height: 400px;
     background-color: rgb(70, 70, 70);
 
     border-radius: 5px;
@@ -20,7 +19,7 @@
 }
 
 .message-area {
-    max-height: 700px;
+    height: 700px;
     overflow-y: scroll;
 }
 

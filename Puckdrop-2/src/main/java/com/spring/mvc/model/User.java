@@ -31,6 +31,10 @@ public class User {
         super();
     }
 	
+	public int getId() {
+		return this.id;
+	}
+    
 	public String getUsername() {
 		return this.username;
 	}
@@ -41,6 +45,10 @@ public class User {
 	
 	public int getFavoriteTeamId() {
 		return this.favoriteTeamId;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 	
 	public void setUsername(String username) {

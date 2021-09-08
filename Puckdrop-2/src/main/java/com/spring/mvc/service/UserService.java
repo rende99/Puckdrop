@@ -16,7 +16,11 @@ public interface UserService {
  
 	public void saveUser(User user);
     
+	public List<User> verifyUser(User user);
+	
     public List<User> findAllUsers();
+    
+    public void changePassword(String oldPassword, String newPassword);
     
     /*
     public List<Message> getAllMessages() {

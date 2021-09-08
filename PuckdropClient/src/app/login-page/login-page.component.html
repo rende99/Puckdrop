@@ -96,6 +96,9 @@
         </div>
         <button type="submit" class="button btn btn-danger" 
         [disabled]="loginInfo.controls.username.errors || loginInfo.controls.password.errors">Log in</button>
+        <div *ngIf="didLoginFail" class="login-fail-div">
+            <h5>We couldn't find an existing user with those credentials.</h5>
+        </div>
     </form>
 </div>
 <small class="attribution">Video ©GoPro</small>

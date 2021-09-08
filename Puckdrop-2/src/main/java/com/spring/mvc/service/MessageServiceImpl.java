@@ -22,8 +22,8 @@ public class MessageServiceImpl implements MessageService {
 		dao.saveMessage(message);
 	}
 	
-	public List<Message> getAllMessages() {
-		return dao.findAllMessages();
+	public List<Message> getAllMessages(int chatId) {
+		return dao.findAllMessages(chatId);
 	}
 	
 }

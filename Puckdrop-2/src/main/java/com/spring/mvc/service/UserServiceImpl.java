@@ -21,8 +21,16 @@ public class UserServiceImpl implements UserService {
 		dao.saveUser(user);
 	}
 	
+	public List<User> verifyUser(User user) {
+		return dao.verifyUser(user);
+	}
+	
 	public List<User> findAllUsers() {
 		return dao.findAllUsers();
+	}
+	
+	public void changePassword(String oldPassword, String newPassword) {
+		dao.changePassword(oldPassword, newPassword);
 	}
 	
 }

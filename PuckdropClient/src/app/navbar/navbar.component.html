@@ -13,7 +13,6 @@
         <a class="nav-link" routerLink="/games">Game Center</a>
       </li>
       <li class="nav-item">
-        <!--Todo: Hardcoded to team with ID=1 (NJD), fix to be reactive in the future-->
         <a class="nav-link" [routerLink]="getMyTeamLink()">My Team</a>
       </li>
       <ng-container *ngIf="(teams | json) != ({} | json)">

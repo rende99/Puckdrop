@@ -11,14 +11,47 @@
         flex-direction: row;
         justify-content: space-between;
         align-items: center;
+
+        .msg {
+            color: white;
+        }
+        
+        .msg-username {
+            font-weight: 700;
+        }
+    }
+
+    .msg-content {
+        color: white;
+    }
+
+}
+
+.my-chat-bubble-parent {
+    background-color: rgb(234, 234, 240);
+    border: black;
+    border-radius: 10px;
+    border-bottom-right-radius: 0px;
+    margin: 1em 1em 1.5em 2em;
+    padding: 0.8em;
+
+    .top-row {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+
+        .msg {
+            color: black;
+        }
+        
+        .msg-username {
+            font-weight: 700;
+        }
+    }
+
+    .msg-content {
+        color: black;
     }
 }
 
-.msg {
-    color: white;
-    margin: 3px 0px 0px 0px;
-}
-
-.msg-username {
-    font-weight: 700;
-}

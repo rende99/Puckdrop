@@ -21,6 +21,7 @@ export class LoginPageComponent implements OnInit {
     username: new FormControl('', [Validators.required]),
     password: new FormControl('', [Validators.required]),
   })
+  didLoginFail: boolean = false;
 
   constructor(
     private teamNamesService: TeamNamesService,
@@ -45,17 +46,11 @@ export class LoginPageComponent implements OnInit {
     })
     this.loginService.postSignup(jsonObject).subscribe(res => {
       var response: any = res;
-      console.log(response);
       this.cookieService.set('username', response.username);
+      this.cookieService.set('id', response.id);
       this.cookieService.set('favoriteTeamId', response.favoriteTeamId);
       this.router.navigate(['/home']);
-    })
-
-    console.log(`Signup process triggered with the following information: 
-    username: ${this.signupInfo.controls.username.value}
-    password: ${this.signupInfo.controls.password.value}
-    favoriteTeamId: ${this.signupInfo.controls.favoriteTeamId.value}
-    `)
+    });
   }
 
   loginSubmitForm() {
@@ -68,14 +63,13 @@ export class LoginPageComponent implements OnInit {
       console.log(res);
       var response: any = res;
       this.cookieService.set('username', response.username);
+      this.cookieService.set('id', response.id);
       this.cookieService.set('favoriteTeamId', response.favoriteTeamId);
       this.router.navigate(['/home']);
-    })
+    }, error => {
+      this.didLoginFail = true;
+    });
 
-    console.log(`Login process triggered with the following information: 
-    username: ${this.loginInfo.controls.username.value}
-    password: ${this.loginInfo.controls.password.value}
-    `)
   }
 
 }
