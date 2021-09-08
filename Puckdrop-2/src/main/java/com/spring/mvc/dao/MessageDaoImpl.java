@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.hibernate.Criteria;
 import org.hibernate.Session;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
 import com.spring.mvc.model.Message;
@@ -19,8 +20,9 @@ public class MessageDaoImpl extends AbstractDao implements MessageDao {
     }
  
     @SuppressWarnings("unchecked")
-    public List<Message> findAllMessages() {
+    public List<Message> findAllMessages(int chatId) {
         Criteria criteria = getSession().createCriteria(Message.class);
+        criteria.add(Restrictions.eq("chatId", chatId));
         return (List<Message>) criteria.list();
     }
 	

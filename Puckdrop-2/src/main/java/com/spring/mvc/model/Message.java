@@ -22,6 +22,9 @@ public class Message {
 	@Column(name="CHAT_ID")
 	private int chatId;
 	
+	@Column(name="USER_ID")
+	private int userId;
+	
 	@Column(name="USERNAME")
 	private String username;
 	
@@ -37,6 +40,10 @@ public class Message {
 
 	public int getChatId() {
 		return chatId;
+	}
+	
+	public int getUserId() {
+		return userId;
 	}
 	
 	public String getUsername() {
@@ -55,6 +62,10 @@ public class Message {
 		this.chatId = chatId;
 	}
 	
+	public void setUserId(int userId) {
+		this.userId = userId;
+	}
+	
 	public void setUsername(String username) {
 		this.username = username;
 	}
@@ -68,8 +79,9 @@ public class Message {
 	}
 	
 	public String toString() {
-		return "chat_id: " + this.getChatId() + " | username: " + this.getUsername() + " | content: " + this.getMessageContent()
-			+ " | timePosted: " + this.getTimePosted();
+		return "chat_id: " + this.getChatId() +  " | user_id: " + this.getUserId() + 
+			" | username: " + this.getUsername() + " | content: " + 
+			this.getMessageContent() + " | timePosted: " + this.getTimePosted();
 	}
 		
 }

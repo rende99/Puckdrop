@@ -1,15 +1,20 @@
 <h2 class="section-title">Chat</h2>
 <div class="chat-parent" *ngIf="(messages | json) != ( {} | json); else chatSkeleton">
     <div class="message-area"  #chatBox [scrollTop]="chatBox.scrollHeight">
+        <div *ngIf="messages && messages.length == 0" class="no-messages-notification" >
+            No messages yet :(
+        </div>
         <div *ngFor="let msg of messages">
-            <app-chat-bubble [username]="msg.username" [messageContent]="msg.messageContent" [timePosted]="msg.timePosted"></app-chat-bubble>
+            <app-chat-bubble [username]="msg.username" [messageContent]="msg.messageContent" [timePosted]="msg.timePosted" [senderId]="msg.userId"></app-chat-bubble>
         </div>
     </div>
     <div class="message-input-area input-group mb-3">
-        <input type="text" class="form-control" (keyup)="messageChanged($event)" [(ngModel)]='messageToSend' 
-        placeholder="Enter a message" aria-label="Message content" aria-describedby="message-send-area" [maxlength]="maxMessageLength">
+        <input type="text" id="messageInputId" class="form-control" (keyup)="messageChanged($event)"
+        [(ngModel)]='messageToSend' placeholder="Enter a message" aria-label="Message content" 
+        aria-describedby="message-send-area" [maxlength]="maxMessageLength" [disabled]="!isAllowedToChat()">
         <div class="input-group-append">
-            <button class="btn btn-info" type="button" id="message-send-area" (click)="sendMessage()">Send message</button>
+            <button class="btn btn-info" type="submit" id="message-send-area"
+            (click)="sendMessage()" [disabled]="!isAllowedToChat()">Send message</button>
         </div>
     </div>
     <div class="characters-left">

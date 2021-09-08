@@ -9,6 +9,6 @@ public interface MessageDao {
 	
 	public void saveMessage(Message message);
 	
-	public List<Message> findAllMessages();
+	public List<Message> findAllMessages(int chatId);
 	
 }

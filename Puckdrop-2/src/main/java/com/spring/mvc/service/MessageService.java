@@ -12,6 +12,6 @@ public interface MessageService {
  
 	public void postMessage(Message message);
     
-    public List<Message> getAllMessages();
+    public List<Message> getAllMessages(int chatId);
     
 }

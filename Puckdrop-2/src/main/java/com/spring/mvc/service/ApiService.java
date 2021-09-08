@@ -31,7 +31,7 @@ public class ApiService {
 		try (Response response = client.newCall(request).execute()) {
 			return response.body().string();
 		} catch (IOException e) {
-		    return "Error fetching /teams: " + e.getMessage();
+		    return "Error fetching NHL endpoint: " + e.getMessage();
 		}
 		   
 	}
@@ -46,7 +46,7 @@ public class ApiService {
 		try (Response response = client.newCall(request).execute()) {
 			return response.body().string();
 		} catch (IOException e) {
-		    return "Error fetching /teams: " + e.getMessage();
+		    return "Error fetching NHL endpoint: " + e.getMessage();
 		}
 		   
 	}

@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.spring.mvc.model.Message;
+import com.spring.mvc.model.PasswordChange;
 import com.spring.mvc.model.User;
 import com.spring.mvc.service.ApiService;
 import com.spring.mvc.service.MessageService;
@@ -55,11 +56,19 @@ public class UserController {
     	return new ResponseEntity<User>(user, HttpStatus.CREATED);
     }
     
-    @RequestMapping(value= "/login", method= RequestMethod.GET) 
+    @RequestMapping(value= "/login", method= RequestMethod.POST) 
     public ResponseEntity<User> login(@RequestBody User user) throws IOException {
     	System.out.println(user.toString());
-    	userService.saveUser(user);
-    	return new ResponseEntity<User>(user, HttpStatus.NOT_ACCEPTABLE);
+    	List<User> foundUsers = userService.verifyUser(user);
+    	return new ResponseEntity<User>(foundUsers.get(0), HttpStatus.OK);
+
+    }
+    
+    @RequestMapping(value= "/changepassword", method= RequestMethod.POST) 
+    public String changePassword(@RequestBody PasswordChange passwordObject) throws IOException {
+    	System.out.println("changing password...");
+    	userService.changePassword(passwordObject.getOldPassword(), passwordObject.getNewPassword());
+    	return "Password changed.";
     }
     
     @RequestMapping(value= "/games/{game_id}", method= RequestMethod.GET) 
@@ -73,11 +82,11 @@ public class UserController {
         return userService.findAllUsers();
     }
     
-    @RequestMapping(value= "/messages", method= RequestMethod.GET) 
-    public List<Message> getMessages() throws IOException {
+    @RequestMapping(value= "/messages/{chatId}", method= RequestMethod.GET) 
+    public List<Message> getMessages(@PathVariable("chatId") int chatId) throws IOException {
     	//return "fake message list";
-    	System.out.println("Getting all messages...");
-    	return messageService.getAllMessages();
+    	System.out.println("Getting messages from chatId specified...");
+    	return messageService.getAllMessages(chatId);
     }
     
     @RequestMapping(value= "/messages", method= RequestMethod.POST) 

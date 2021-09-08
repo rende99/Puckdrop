@@ -12,14 +12,15 @@ export class MessagesService {
 
   constructor(private _http: HttpClient, private cookieService: CookieService) { }
 
-  getMessages() {
-    return this._http.get(global.APP_URL + '/messages').pipe(retry(2));
+  getMessages(chatId) {
+    return this._http.get(global.APP_URL + `/messages/${chatId}`).pipe(retry(2));
   }
 
-  sendMessage(str, teamId) {
+  sendMessage(str, chatId) {
     var userToUse = this.cookieService.get('username') ? this.cookieService.get('username') : "FAKE_USERNAME";
     var jsonObject = JSON.stringify({
-      chatId: teamId,
+      chatId: chatId,
+      userId: parseInt(this.cookieService.get('id')),
       username: userToUse,
       messageContent: str,
       timePosted: Date.now()

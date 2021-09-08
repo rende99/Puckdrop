@@ -30,3 +30,14 @@
     margin: 20px;
     padding: 10px 100px 10px 100px;
 }
+
+.invalid-form {
+    color: red;
+    font-weight: 300;
+    margin-left: 6px;
+}
+
+.valid-form {
+    color: rgb(28, 238, 0);
+    margin-left: 6px;
+}
