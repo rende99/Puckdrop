@@ -30,15 +30,12 @@ export class RosterComponent implements OnInit, OnChanges {
 
   makeRosterRequest() {
     this.rosterService.getRoster(this.id).subscribe(res => {
-      console.log(res);
       var response: any = res;
-      console.log(response.roster[0].person)
       this.roster.forwards.lw = response.roster.filter(p => p.position.type == "Forward" && p.position.code == "L");
       this.roster.forwards.c = response.roster.filter(p => p.position.type == "Forward" && p.position.code == "C");
       this.roster.forwards.rw = response.roster.filter(p => p.position.type == "Forward" && p.position.code == "R");
       this.roster.defenders = response.roster.filter(p => p.position.code == "D");
       this.roster.goalies = response.roster.filter(p => p.position.code == "G");
-      console.log(this.roster);
     });
   }
 

@@ -33,8 +33,6 @@ export class LoginPageComponent implements OnInit {
   ngOnInit() {
     this.teamNamesService.getTeamNames().subscribe(res => {
       this.teamNames = res;
-      console.log(res);
-      console.log("Teams above.");
     });
   }
 
@@ -60,7 +58,6 @@ export class LoginPageComponent implements OnInit {
     })
 
     this.loginService.postLogin(jsonObject).subscribe(res => {
-      console.log(res);
       var response: any = res;
       this.cookieService.set('username', response.username);
       this.cookieService.set('id', response.id);

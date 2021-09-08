@@ -27,7 +27,6 @@ export class FutureScheduleComponent implements OnInit, OnChanges {
     this.scheduleService.getTeamSchedule(this.id).subscribe(res => {
       this.schedule = res;
       this.schedule = this.schedule.dates;
-      console.log(this.schedule);
       this.upcomingSchedule = this.schedule.slice(0,3);
     });
   }

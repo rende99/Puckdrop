@@ -20,6 +20,7 @@ export class LeagueStandingsTableComponent implements OnInit {
   newStandings: any = {}
   focusedDivision: Division = Division.League
   tableOpen: boolean = false;
+
   constructor(private standingsService: StandingsService) { }
 
   ngOnInit() {
@@ -55,6 +56,7 @@ export class LeagueStandingsTableComponent implements OnInit {
 
   // This function will take in the focused division, and modify rawStandings to create the standings object we want to display.
   cleanStandings() {
+
     if(this.focusedDivision === Division.League){
       var records = this.rawStandings.records;
       var newArr = [];
@@ -66,7 +68,7 @@ export class LeagueStandingsTableComponent implements OnInit {
       console.log(this.rawStandings.records[this.focusedDivision].teamRecords);
       this.newStandings = this.rawStandings.records[this.focusedDivision].teamRecords.sort((a, b) => (parseInt(a.leagueRank) > parseInt(b.leagueRank)) ? 1 : -1)
     }
-    console.log(this.newStandings);
+
   }
 
   toggleTableOpen() {

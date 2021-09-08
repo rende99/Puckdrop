@@ -26,7 +26,6 @@ export class TeamPageComponent implements OnInit {
     this.singleStatsService.getTeamStandings(this.id).subscribe(res => {
       this.teamInfo = res;
       this.teamInfo = this.teamInfo.teams[0]
-      console.log(this.teamInfo)
       this.connectTeamMedia();
       this.setCSSColorway();
     });

@@ -28,7 +28,6 @@ export class ChatBoxComponent implements OnInit {
   ngOnInit() {
     this.messagesService.getMessages(this.chatId).subscribe(res => {
       this.messages = res;
-      console.log(res);
     });
   }
 

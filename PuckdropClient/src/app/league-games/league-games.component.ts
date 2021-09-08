@@ -17,11 +17,9 @@ export class LeagueGamesComponent implements OnInit {
   }
 
   getGamesToday(){
-    console.log(this.today);
     this.scheduleService.getScheduleBetweenDates(this.today, this.today).subscribe(res => {
       this.games = res;
       this.games = this.games.dates[0].games;
-      console.log(this.games);
     });
   }
 
