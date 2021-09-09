@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, SimpleChanges } from '@angular/core';
+import { Component, Input, OnInit, Output, SimpleChanges } from '@angular/core';
 import { SingleStatsService } from '../single-stats.service';
 import { ActivatedRoute } from '@angular/router'; 
 import  *  as  teamMediaImport  from  '../../assets/team-media.json';
@@ -9,7 +9,7 @@ import  *  as  teamMediaImport  from  '../../assets/team-media.json';
   styleUrls: ['./team-page.component.scss']
 })
 export class TeamPageComponent implements OnInit {
-  @Input() id;
+  @Output() id;
   teamInfo: any = {};
   teamMedia: any = {};
   

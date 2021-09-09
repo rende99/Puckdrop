@@ -31,6 +31,10 @@ export class ChatBoxComponent implements OnInit {
     });
   }
 
+  ngOnChanges() {
+    this.ngOnInit();
+  }
+
   messageChanged(e) {
     this.calculateCharactersLeft(e.target.value);
   }
