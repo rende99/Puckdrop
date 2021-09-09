@@ -7,15 +7,18 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaBuilder.In;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
+import javax.transaction.Transactional;
 
 import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.spring.mvc.model.DeleteAccountModel;
 import com.spring.mvc.model.User;
 
 @Repository("userDao")
@@ -26,6 +29,17 @@ public class UserDaoImpl extends AbstractDao implements UserDao {
     	session.persist(user);
     	persist(user);
     }
+    
+	@SuppressWarnings("unchecked")
+	public void deleteAccount(DeleteAccountModel dam) {
+		Session session = this.getSession();
+		Criteria criteria = getSession().createCriteria(User.class);
+		criteria.add(Restrictions.eq("id", dam.getId()));
+		criteria.add(Restrictions.eq("password", dam.getPassword()));
+		User userToDelete = (User) criteria.uniqueResult();
+		session.delete(userToDelete);
+	}
+
     
     @SuppressWarnings("unchecked")
 	public List<User> verifyUser(User user) {

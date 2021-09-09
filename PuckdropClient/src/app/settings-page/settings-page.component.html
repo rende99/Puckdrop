@@ -31,10 +31,51 @@
             id="newPasswordInput" placeholder="New Password" required>
             <small id="passwordHelp" class="form-text text-muted">Between 8 and 20 characters!</small>
         </div>
-        <button type="submit" class="button btn btn-danger"
+        <button type="submit" class="button btn btn-primary"
         [disabled]="passwordInfo.controls.oldPassword.errors || passwordInfo.controls.newPassword.errors"
-        >Update Info</button>
+        >Update password</button>
     </form>
+    <div class="delete-account-div">
+        <h2>Danger Zone</h2>
+        <button type="button" class="button btn btn-danger" data-backdrop="false"
+        data-toggle="modal" data-target="#deleteModal">
+            Permanently delete account
+        </button> 
+    </div>
+    <div class="modal fade" id="deleteModal" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <form class="form-parent" [formGroup]="deleteInfo" (ngSubmit)="deleteAccount()">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Are you sure you want to delete your account?</h5>
+                        <a class="close" data-dismiss="modal" aria-label="Close">
+                            <i class="fas fa-times fa-lg"></i>
+                        </a>
+                    </div>
+                    <div class="modal-body">
+                        <p>Enter your password to verify your identity.</p>
+                        <label for="passInput">Password</label>
+                        <span *ngIf="deleteInfo.controls.password.invalid && 
+                        (deleteInfo.controls.password.dirty || deleteInfo.controls.password.touched)" class="invalid-form">
+                            <label *ngIf="deleteInfo.controls.password.errors?.required" class="invalid-form">
+                                Your password is required.
+                            </label>
+                        </span>
+                        <input type="password" class="form-control" id="passInput"
+                            formControlName="password" placeholder="Password">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-danger"
+                        [disabled]="deleteInfo.controls.password.errors">
+                            Yes, delete my account
+                        </button>
+                    </div>
+                  </div>
+            </form>
+            
+        </div>
+    </div>
 </div>
 
 

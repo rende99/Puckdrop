@@ -41,3 +41,38 @@
     color: rgb(28, 238, 0);
     margin-left: 6px;
 }
+
+.fas {
+    color: gray;
+    cursor: pointer;
+}
+
+
+.delete-account-div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 3rem 1rem 3rem 1rem;
+    border: 10px solid;
+    border-image: repeating-linear-gradient(45deg, #eee, #eee 10px,red 10px,red 20px) 20;
+
+    h2 {
+        font-weight: 900;
+    }
+
+}
+
+.modal-dialog {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .form-parent {
+
+        .modal-content {
+            min-width: 30rem;
+        }
+    }
+}
