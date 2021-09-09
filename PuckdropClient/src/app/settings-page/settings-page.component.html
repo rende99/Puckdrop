@@ -54,7 +54,6 @@
                     </div>
                     <div class="modal-body">
                         <p>Enter your password to verify your identity.</p>
-                        <label for="passInput">Password</label>
                         <span *ngIf="deleteInfo.controls.password.invalid && 
                         (deleteInfo.controls.password.dirty || deleteInfo.controls.password.touched)" class="invalid-form">
                             <label *ngIf="deleteInfo.controls.password.errors?.required" class="invalid-form">
@@ -73,7 +72,6 @@
                     </div>
                   </div>
             </form>
-            
         </div>
     </div>
 </div>

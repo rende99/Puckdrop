@@ -16,10 +16,16 @@ export class LeagueGamesComponent implements OnInit {
     this.getGamesToday();
   }
 
+  ngOnChanges() {
+    this.ngOnInit();
+  }
+
   getGamesToday(){
     this.scheduleService.getScheduleBetweenDates(this.today, this.today).subscribe(res => {
       this.games = res;
-      this.games = this.games.dates[0].games;
+      if(this.games.dates.length){
+        this.games = this.games.dates[0].games;
+      }
     });
   }
 
