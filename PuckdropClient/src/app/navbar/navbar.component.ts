@@ -19,7 +19,6 @@ export class NavbarComponent implements OnInit {
   }
 
   fetchTeams() {
-    console.log("fetching.......")
     this.teamNamesService.getTeamNames().subscribe(res => {
       this.teams = res;
     });

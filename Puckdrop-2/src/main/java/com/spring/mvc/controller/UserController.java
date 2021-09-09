@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.spring.mvc.model.DeleteAccountModel;
 import com.spring.mvc.model.Message;
 import com.spring.mvc.model.PasswordChange;
 import com.spring.mvc.model.User;
@@ -61,7 +62,12 @@ public class UserController {
     	System.out.println(user.toString());
     	List<User> foundUsers = userService.verifyUser(user);
     	return new ResponseEntity<User>(foundUsers.get(0), HttpStatus.OK);
-
+    }
+    
+    @RequestMapping(value= "/deleteaccount", method= RequestMethod.DELETE) 
+    public ResponseEntity deleteUser(@RequestBody DeleteAccountModel dam) throws IOException {
+    	userService.deleteAccount(dam);
+    	return new ResponseEntity(HttpStatus.OK);
     }
     
     @RequestMapping(value= "/changepassword", method= RequestMethod.POST) 
@@ -85,7 +91,6 @@ public class UserController {
     @RequestMapping(value= "/messages/{chatId}", method= RequestMethod.GET) 
     public List<Message> getMessages(@PathVariable("chatId") int chatId) throws IOException {
     	//return "fake message list";
-    	System.out.println("Getting messages from chatId specified...");
     	return messageService.getAllMessages(chatId);
     }
     

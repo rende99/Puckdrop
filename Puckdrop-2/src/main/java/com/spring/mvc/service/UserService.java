@@ -8,6 +8,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Service;
 
 import com.spring.mvc.dao.UserDao;
+import com.spring.mvc.model.DeleteAccountModel;
 import com.spring.mvc.model.Message;
 import com.spring.mvc.model.User;
  
@@ -15,6 +16,8 @@ import com.spring.mvc.model.User;
 public interface UserService {
  
 	public void saveUser(User user);
+	
+	public void deleteAccount(DeleteAccountModel dam);
     
 	public List<User> verifyUser(User user);
 	

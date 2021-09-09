@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.spring.mvc.dao.UserDao;
+import com.spring.mvc.model.DeleteAccountModel;
 import com.spring.mvc.model.User;
 
 @Service("userService")
@@ -20,6 +21,11 @@ public class UserServiceImpl implements UserService {
 	public void saveUser(User user) {
 		dao.saveUser(user);
 	}
+	
+	public void deleteAccount(DeleteAccountModel dam) {
+		dao.deleteAccount(dam);
+	}
+
 	
 	public List<User> verifyUser(User user) {
 		return dao.verifyUser(user);

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { LoginService } from '../login.service';
 
@@ -14,8 +15,15 @@ export class SettingsPageComponent implements OnInit {
     oldPassword: new FormControl('', [Validators.required]),
     newPassword: new FormControl('', [Validators.required, Validators.minLength(8), Validators.maxLength(20)]),
   })
+  deleteInfo = new FormGroup({
+    password: new FormControl('', [Validators.required])
+  })
 
-  constructor(private loginService: LoginService, private cookieService: CookieService) { }
+  constructor(
+    private loginService: LoginService,
+    private cookieService: CookieService,
+    private router: Router
+  ) { }
 
   ngOnInit() {
   }
@@ -31,6 +39,18 @@ export class SettingsPageComponent implements OnInit {
     this.loginService.changePassword(passwordUpdateObject).subscribe(res => {
       var response: any = res;
       console.log(response);
+    })
+  }
+
+  deleteAccount() {
+    var accountDeleteObject = JSON.stringify({
+      id: parseInt(this.cookieService.get('id')),
+      password: this.deleteInfo.controls.password.value
+    });
+    
+    this.loginService.deleteAccount(accountDeleteObject).subscribe(res => {
+      console.log("DELETE operation completed.");
+      this.router.navigate(['/login']);
     })
   }
 

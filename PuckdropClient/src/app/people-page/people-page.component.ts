@@ -35,7 +35,6 @@ export class PeoplePageComponent implements OnInit {
     this.playerStatsService.getPlayerStats(this.id).subscribe(res => {
       this.stats = res;
       this.stats = this.stats.stats[0].splits[0]
-      console.log(this.stats);
     });
   }
 
@@ -43,7 +42,6 @@ export class PeoplePageComponent implements OnInit {
     this.playerInfoService.getPlayerInfo(this.id).subscribe(res => {
       this.info = res;
       this.info = this.info.people[0];
-      console.log(this.info);
       this.connectTeamMedia();
       this.setCSSColorway();
     });
