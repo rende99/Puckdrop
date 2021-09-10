@@ -1,20 +1,12 @@
 package com.spring.mvc.service;
 
-import org.json.JSONObject;
 import org.springframework.stereotype.Service;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.spring.mvc.model.NhlTeam;
-
-import okhttp3.Call;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
 import java.io.IOException;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.util.List;
 
 @Service
 public class ApiService {

@@ -1,7 +1,6 @@
 package com.spring.mvc.model;
 
 import java.sql.Timestamp;
-import java.time.LocalDate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

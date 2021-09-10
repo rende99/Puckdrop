@@ -8,7 +8,6 @@ import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
 import com.spring.mvc.model.Message;
-import com.spring.mvc.model.User;
 
 @Repository("messageDao")
 public class MessageDaoImpl extends AbstractDao implements MessageDao {
