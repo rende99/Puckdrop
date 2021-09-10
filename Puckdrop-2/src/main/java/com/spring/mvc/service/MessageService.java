@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.spring.mvc.model.Message;
-import com.spring.mvc.model.User;
 
 @Service
 public interface MessageService {

@@ -7,9 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.spring.mvc.dao.MessageDao;
-import com.spring.mvc.dao.UserDao;
 import com.spring.mvc.model.Message;
-import com.spring.mvc.model.User;
 
 @Service("messageService")
 @Transactional
