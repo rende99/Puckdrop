@@ -12,9 +12,11 @@
       <li class="nav-item">
         <a class="nav-link" routerLink="/games">Game Center</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" [routerLink]="getMyTeamLink()">My Team</a>
-      </li>
+      <ng-container *ngIf="cookieService.get('favoriteTeamId') != -1">
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="getMyTeamLink()">My Team</a>
+        </li>
+      </ng-container>
       <ng-container *ngIf="(teams | json) != ({} | json)">
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle"id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
