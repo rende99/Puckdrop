@@ -19,9 +19,11 @@ export class ChatBubbleComponent implements OnInit {
 
   timeToString(rawTime: number) {
     var d = Math.floor((new Date().getTime() - rawTime)/1000);
+    
     // d now represents seconds since message was sent
-
-    if(d < 60){
+    if(d < 2){
+      return `just now`;
+    }else if(d < 60){
       return `${d} seconds ago`;
     }else if(d / 60 < 60) {
       return `${Math.floor(d/60)} minutes ago`;
