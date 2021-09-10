@@ -41,7 +41,17 @@ export class ChatBoxComponent implements OnInit {
 
   sendMessage() {
     if(this.messageToSend){
-      this.messagesService.sendMessage(this.messageToSend, this.chatId).subscribe(res => {
+      let userToUse = this.cookieService.get('username') ? this.cookieService.get('username') : "FAKE_USERNAME";
+
+      let jsonMessage = {
+        chatId: this.chatId,
+        userId: parseInt(this.cookieService.get('id')),
+        username: userToUse,
+        messageContent: this.messageToSend,
+        timePosted: Date.now()
+      }
+
+      this.messagesService.sendMessage(jsonMessage).subscribe(res => {
         var inputField: any = document.getElementById("messageInputId");
         inputField.value = '';
 

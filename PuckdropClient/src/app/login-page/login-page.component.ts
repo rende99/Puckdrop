@@ -37,11 +37,12 @@ export class LoginPageComponent implements OnInit {
   }
 
   signupSubmitForm() {
-    var jsonObject = JSON.stringify({
+    var jsonObject = {
         username: this.signupInfo.controls.username.value,
         password: this.signupInfo.controls.password.value,
         favoriteTeamId: this.signupInfo.controls.favoriteTeamId.value
-    })
+    };
+    
     this.loginService.postSignup(jsonObject).subscribe(res => {
       var response: any = res;
       this.cookieService.set('username', response.username);
@@ -52,10 +53,10 @@ export class LoginPageComponent implements OnInit {
   }
 
   loginSubmitForm() {
-    var jsonObject = JSON.stringify({
+    var jsonObject = {
       username: this.loginInfo.controls.username.value,
       password: this.loginInfo.controls.password.value
-    })
+    };
 
     this.loginService.postLogin(jsonObject).subscribe(res => {
       var response: any = res;

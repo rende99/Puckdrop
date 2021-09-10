@@ -31,11 +31,12 @@ export class SettingsPageComponent implements OnInit {
   submitChangePassword() {
     console.log("changing password");
     
-    var passwordUpdateObject = JSON.stringify({
+    var passwordUpdateObject = {
       id: parseInt(this.cookieService.get('id')),
       oldPassword: this.passwordInfo.controls.oldPassword.value,
       newPassword: this.passwordInfo.controls.newPassword.value
-    })
+    };
+    
     this.loginService.changePassword(passwordUpdateObject).subscribe(res => {
       var response: any = res;
       console.log(response);
@@ -43,15 +44,15 @@ export class SettingsPageComponent implements OnInit {
   }
 
   deleteAccount() {
-    var accountDeleteObject = JSON.stringify({
+    var accountDeleteObject = {
       id: parseInt(this.cookieService.get('id')),
       password: this.deleteInfo.controls.password.value
-    });
+    };
     
     this.loginService.deleteAccount(accountDeleteObject).subscribe(res => {
       console.log("DELETE operation completed.");
       this.router.navigate(['/login']);
-    })
+    });
   }
 
 }
