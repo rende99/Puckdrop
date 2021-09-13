@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { LoginService } from '../login.service';
+import { TeamNamesService } from '../team-names.service';
 
 @Component({
   selector: 'app-settings-page',
@@ -10,22 +11,36 @@ import { LoginService } from '../login.service';
   styleUrls: ['./settings-page.component.scss']
 })
 export class SettingsPageComponent implements OnInit {
-
+  teamNames: any = {};
   passwordInfo = new FormGroup({
     oldPassword: new FormControl('', [Validators.required]),
     newPassword: new FormControl('', [Validators.required, Validators.minLength(8), Validators.maxLength(20)]),
   })
+
   deleteInfo = new FormGroup({
     password: new FormControl('', [Validators.required])
   })
 
+  favTeamInfo = new FormGroup({
+    favoriteTeamId: new FormControl('', [Validators.required])
+  });
+
   constructor(
+    private teamNamesService: TeamNamesService,
     private loginService: LoginService,
     private cookieService: CookieService,
     private router: Router
   ) { }
 
   ngOnInit() {
+    this.teamNamesService.getTeamNames().subscribe(res => {
+      this.teamNames = res;
+    });
+  }
+
+  isFavoriteTeam(teamId){
+    console.log(+this.cookieService.get('favoriteTeamId'), teamId);
+    return +this.cookieService.get('favoriteTeamId') == teamId;
   }
 
   submitChangePassword() {
@@ -38,9 +53,9 @@ export class SettingsPageComponent implements OnInit {
     };
     
     this.loginService.changePassword(passwordUpdateObject).subscribe(res => {
-      var response: any = res;
-      console.log(response);
+      console.log("password successfully changed.")
     })
+
   }
 
   deleteAccount() {
@@ -54,6 +69,19 @@ export class SettingsPageComponent implements OnInit {
       this.cookieService.deleteAll();
       this.router.navigate(['/login']);
     });
+  }
+
+  submitChangeFavTeam() {
+    let updateTeamObject = {
+      id: +this.cookieService.get('id'),
+      favoriteTeamId: this.favTeamInfo.controls.favoriteTeamId.value
+    }
+    console.log(this.favTeamInfo.controls.favoriteTeamId.value);
+    this.loginService.changeFavoriteTeam(updateTeamObject).subscribe(res => {
+      this.cookieService.set('favoriteTeamId', this.favTeamInfo.controls.favoriteTeamId.value);
+      console.log("Updated favorite team.");
+    });
+
   }
 
 }

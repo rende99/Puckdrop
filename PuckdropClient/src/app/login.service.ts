@@ -25,6 +25,11 @@ type deleteCred = {
   password: string
 }
 
+type newTeamCred = {
+  id: number,
+  favoriteTeamId: number
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -40,16 +45,10 @@ export class LoginService {
   }
 
   postLogin(loginObject: loginCred) {
-    let headers = new HttpHeaders({
-      'Content-Type':'application/json',
-    })
     return this._http.post(global.APP_URL + '/login', JSON.stringify(loginObject), {'headers': this.headers});
   }
 
   changePassword(passwordObject: changePassCred) {
-    let headers = new HttpHeaders({
-      'Content-Type':'application/json',
-    })
     return this._http.post(global.APP_URL + '/changepassword', JSON.stringify(passwordObject), {'headers': this.headers});
   }
 
@@ -59,6 +58,10 @@ export class LoginService {
       body: JSON.stringify(deleteObject)
     }
     return this._http.delete(global.APP_URL + '/deleteaccount', httpOptions);
+  }
+
+  changeFavoriteTeam(newTeamObject: newTeamCred) {
+    return this._http.put(global.APP_URL + '/updatefavoriteteam', JSON.stringify(newTeamObject), {'headers': this.headers});
   }
 
 }
