@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.spring.mvc.manager.RequestManager;
 import com.spring.mvc.model.DeleteAccountModel;
 import com.spring.mvc.model.Message;
 import com.spring.mvc.model.PasswordChange;
@@ -28,16 +29,10 @@ import com.spring.mvc.service.UserService;
 @RestController
 @RequestMapping("/")
 @CrossOrigin
-public class UserController {
+public class RequestController {
 	
-    @Autowired
-    UserService userService;
-    
-    @Autowired
-    MessageService messageService;
-
-    @Autowired
-    ApiService apiService;
+	@Autowired
+	RequestManager requestManager;
     
     @RequestMapping(value= "/", method= RequestMethod.GET) 
     public List<User> PlainOld() {
@@ -45,102 +40,102 @@ public class UserController {
     	u.setUsername("username111");
     	u.setPassword("pass1122");
     	System.out.println(u.getUsername());
-    	List<User> allUsers = userService.findAllUsers();
+    	List<User> allUsers = requestManager.getUserService().findAllUsers();
     	System.out.println(allUsers);
-    	return userService.findAllUsers();
+    	return requestManager.getUserService().findAllUsers();
     }
     
     @RequestMapping(value= "/signup", method= RequestMethod.POST) 
     public ResponseEntity<User> signup(@RequestBody User user) throws IOException {
     	System.out.println(user.toString());
-    	userService.saveUser(user);
+    	requestManager.getUserService().saveUser(user);
     	return new ResponseEntity<User>(user, HttpStatus.CREATED);
     }
     
     @RequestMapping(value= "/login", method= RequestMethod.POST) 
     public ResponseEntity<User> login(@RequestBody User user) throws IOException {
     	System.out.println(user.toString());
-    	List<User> foundUsers = userService.verifyUser(user);
+    	List<User> foundUsers = requestManager.getUserService().verifyUser(user);
     	return new ResponseEntity<User>(foundUsers.get(0), HttpStatus.OK);
     }
     
     @RequestMapping(value= "/deleteaccount", method= RequestMethod.DELETE) 
     public ResponseEntity deleteUser(@RequestBody DeleteAccountModel dam) throws IOException {
-    	userService.deleteAccount(dam);
+    	requestManager.getUserService().deleteAccount(dam);
     	return new ResponseEntity(HttpStatus.OK);
     }
     
     @RequestMapping(value= "/changepassword", method= RequestMethod.POST) 
     public String changePassword(@RequestBody PasswordChange passwordObject) throws IOException {
     	System.out.println("changing password...");
-    	userService.changePassword(passwordObject.getOldPassword(), passwordObject.getNewPassword());
+    	requestManager.getUserService().changePassword(passwordObject.getOldPassword(), passwordObject.getNewPassword());
     	return "Password changed.";
     }
     
     @RequestMapping(value= "/games/{game_id}", method= RequestMethod.GET) 
     public String getGameInfo(@PathVariable("game_id") String game_id) throws IOException {
-    	return apiService.consumeEndpoint("/game", "/" + game_id + "/feed/live");
+    	return requestManager.getApiService().consumeEndpoint("/game", "/" + game_id + "/feed/live");
     }
     
     @RequestMapping(value= "/users", method= RequestMethod.GET) 
     public List<User> getAllUsers() {
     	//return "HI!";
-        return userService.findAllUsers();
+        return requestManager.getUserService().findAllUsers();
     }
     
     @RequestMapping(value= "/messages/{chatId}", method= RequestMethod.GET) 
     public List<Message> getMessages(@PathVariable("chatId") int chatId) throws IOException {
     	//return "fake message list";
-    	return messageService.getAllMessages(chatId);
+    	return requestManager.getMessageService().getAllMessages(chatId);
     }
     
     @RequestMapping(value= "/messages", method= RequestMethod.POST) 
     public ResponseEntity<Message> postMessage(@RequestBody Message msg) throws IOException {
     	System.out.println(msg.toString());
-    	messageService.postMessage(msg);
+    	requestManager.getMessageService().postMessage(msg);
     	return new ResponseEntity<Message>(msg, HttpStatus.CREATED);
     }
     
     @RequestMapping(value= "/teams", method= RequestMethod.GET) 
     public String getAllTeams() throws IOException {
-    	return apiService.consumeEndpoint("/teams");
+    	return requestManager.getApiService().consumeEndpoint("/teams");
     }
     
     @RequestMapping(value= "/teams/{id}/roster", method= RequestMethod.GET) 
     public String getRosterIds(@PathVariable("id") String id) throws IOException {
-    	return apiService.consumeEndpoint("/teams", "/" + id + "/roster");
+    	return requestManager.getApiService().consumeEndpoint("/teams", "/" + id + "/roster");
     }
     
     @RequestMapping(value= "/standings", method= RequestMethod.GET) 
     public String getStandings() throws IOException {
-    	return apiService.consumeEndpoint("/standings");
+    	return requestManager.getApiService().consumeEndpoint("/standings");
     }
     
     @RequestMapping(value= "/teamstats/{id}", method= RequestMethod.GET) 
     public String getTeamStats(@PathVariable("id") String id) throws IOException {
-    	return apiService.consumeEndpoint("/teams", "/" + id + "?expand=team.stats");
+    	return requestManager.getApiService().consumeEndpoint("/teams", "/" + id + "?expand=team.stats");
     }
     
     @RequestMapping(value= "/people/{id}", method= RequestMethod.GET) 
     public String getPlayerInfo(@PathVariable("id") String id) throws IOException {
-    	return apiService.consumeEndpoint("/people", "/" + id);
+    	return requestManager.getApiService().consumeEndpoint("/people", "/" + id);
     }
     
     @RequestMapping(value= "/people/{id}/stats", method= RequestMethod.GET) 
     public String getPlayerStats(@PathVariable("id") String id) throws IOException {
-    	return apiService.consumeEndpoint("/people", "/" + id + "/stats?stats=statsSingleSeason");
+    	return requestManager.getApiService().consumeEndpoint("/people", "/" + id + "/stats?stats=statsSingleSeason");
     }
     
     @RequestMapping(value= "/schedule/{id}", method= RequestMethod.GET) 
     public String getTeamSchedule(@PathVariable("id") String id) throws IOException {
     	LocalDate now = LocalDate.now();
     	LocalDate end = now.plusYears(1);
-    	return apiService.consumeEndpoint("/schedule?teamId=", id + "&startDate=" + now + "&endDate=" + end);
+    	return requestManager.getApiService().consumeEndpoint("/schedule?teamId=", id + "&startDate=" + now + "&endDate=" + end);
     }
     
     @RequestMapping(value= "/schedule/{sd}/{ed}", method= RequestMethod.GET) 
     public String getScheduleBetweenDates(@PathVariable("sd") String sd, @PathVariable("ed") String ed) throws IOException {
-    	return apiService.consumeEndpoint("/schedule?startDate=", sd + "&endDate=" + ed);
+    	return requestManager.getApiService().consumeEndpoint("/schedule?startDate=", sd + "&endDate=" + ed);
     	
     }
     
