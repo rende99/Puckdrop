@@ -1,12 +1,9 @@
 package com.spring.mvc.controller;
 
 import java.io.IOException;
-import java.sql.Timestamp;
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 
-import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,9 +19,6 @@ import com.spring.mvc.model.DeleteAccountModel;
 import com.spring.mvc.model.Message;
 import com.spring.mvc.model.PasswordChange;
 import com.spring.mvc.model.User;
-import com.spring.mvc.service.ApiService;
-import com.spring.mvc.service.MessageService;
-import com.spring.mvc.service.UserService;
 
 @RestController
 @RequestMapping("/")

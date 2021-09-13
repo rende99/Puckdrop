@@ -51,6 +51,7 @@ export class SettingsPageComponent implements OnInit {
     
     this.loginService.deleteAccount(accountDeleteObject).subscribe(res => {
       console.log("DELETE operation completed.");
+      this.cookieService.deleteAll();
       this.router.navigate(['/login']);
     });
   }
