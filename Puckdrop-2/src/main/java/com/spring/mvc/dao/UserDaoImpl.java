@@ -20,6 +20,15 @@ public class UserDaoImpl extends AbstractDao implements UserDao {
     	persist(user);
     }
     
+    public void changeFavoriteTeam(int userId, int newTeamId) {
+    	Session session = this.getSession();
+    	String queryString = "UPDATE User u set u.favoriteTeamId= :newteamid WHERE u.id= :uid";
+    	Query query = session.createQuery(queryString);
+    	query.setParameter("newteamid", newTeamId);
+    	query.setParameter("uid", userId);
+    	query.executeUpdate();
+    }
+    
 	public void deleteAccount(DeleteAccountModel dam) {
 		Session session = this.getSession();
 		Criteria criteria = getSession().createCriteria(User.class);

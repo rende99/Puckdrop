@@ -18,6 +18,7 @@ import com.spring.mvc.manager.RequestManager;
 import com.spring.mvc.model.DeleteAccountModel;
 import com.spring.mvc.model.Message;
 import com.spring.mvc.model.PasswordChange;
+import com.spring.mvc.model.TeamChange;
 import com.spring.mvc.model.User;
 
 @RestController
@@ -29,13 +30,7 @@ public class RequestController {
 	RequestManager requestManager;
     
     @RequestMapping(value= "/", method= RequestMethod.GET) 
-    public List<User> PlainOld() {
-    	User u = new User();
-    	u.setUsername("username111");
-    	u.setPassword("pass1122");
-    	System.out.println(u.getUsername());
-    	List<User> allUsers = requestManager.getUserService().findAllUsers();
-    	System.out.println(allUsers);
+    public List<User> rootReq() {
     	return requestManager.getUserService().findAllUsers();
     }
     
@@ -60,10 +55,16 @@ public class RequestController {
     }
     
     @RequestMapping(value= "/changepassword", method= RequestMethod.POST) 
-    public String changePassword(@RequestBody PasswordChange passwordObject) throws IOException {
+    public ResponseEntity changePassword(@RequestBody PasswordChange passwordObject) throws IOException {
     	System.out.println("changing password...");
     	requestManager.getUserService().changePassword(passwordObject.getOldPassword(), passwordObject.getNewPassword());
-    	return "Password changed.";
+    	return new ResponseEntity(HttpStatus.OK);
+    }
+    
+    @RequestMapping(value= "/updatefavoriteteam", method= RequestMethod.PUT) 
+    public ResponseEntity changeFavoriteTeam(@RequestBody TeamChange teamObject) throws IOException {
+    	requestManager.getUserService().changeFavoriteTeam(teamObject.getId(), teamObject.getFavoriteTeamId());
+    	return new ResponseEntity(HttpStatus.OK);
     }
     
     @RequestMapping(value= "/games/{game_id}", method= RequestMethod.GET) 

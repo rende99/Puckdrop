@@ -22,10 +22,13 @@ public class UserServiceImpl implements UserService {
 		dao.saveUser(user);
 	}
 	
+	public void changeFavoriteTeam(int userId, int newTeamId) {
+		dao.changeFavoriteTeam(userId, newTeamId);
+	}
+	
 	public void deleteAccount(DeleteAccountModel dam) {
 		dao.deleteAccount(dam);
 	}
-
 	
 	public List<User> verifyUser(User user) {
 		return dao.verifyUser(user);
