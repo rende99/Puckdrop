@@ -14,6 +14,7 @@ export class PeoplePageComponent implements OnInit {
   stats: any = {};
   info: any = {};
   playerImageUrl: string;
+  useRealImage: boolean = true;
   teamMedia: any = {};
 
   constructor(
@@ -67,6 +68,10 @@ export class PeoplePageComponent implements OnInit {
     let birthDate = new Date(d);
     let timeDelta = Math.abs(Date.now() - birthDate.getTime());
     return Math.floor( (timeDelta / (1000 * 3600 * 24)) / 365.25);
+  }
+
+  imageLoadError() {
+    this.useRealImage = false;
   }
 
 }
