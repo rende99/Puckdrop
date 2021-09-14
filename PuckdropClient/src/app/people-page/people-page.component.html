@@ -3,7 +3,10 @@
     *ngIf="(stats | json) != ({} | json) && (info | json) != ({} | json); else peopleSkeleton">
     <ng-container *ngIf="stats; else noData">
         <div class="relative-div">
-            <img class="player-image" [src]="playerImageUrl">
+            <img class="player-image" [src]="playerImageUrl" (error)="imageLoadError()" [hidden]="!useRealImage">
+            <div *ngIf="!useRealImage" class="player-image-template">
+                <h1>?</h1>
+            </div>
             <ul class="player-info-ul">
                 <li><i class="fas fa-birthday-cake"></i>{{ getAgeFromDate(info.birthDate) }}</li>
                 <li><i class="fas fa-ruler-vertical"></i>{{ info.height }}</li>
