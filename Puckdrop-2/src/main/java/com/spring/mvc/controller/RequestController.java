@@ -49,22 +49,22 @@ public class RequestController {
     }
     
     @RequestMapping(value= "/deleteaccount", method= RequestMethod.DELETE) 
-    public ResponseEntity deleteUser(@RequestBody DeleteAccountModel dam) throws IOException {
+    public ResponseEntity<Void> deleteUser(@RequestBody DeleteAccountModel dam) throws IOException {
     	requestManager.getUserService().deleteAccount(dam);
-    	return new ResponseEntity(HttpStatus.OK);
+    	return new ResponseEntity<Void>(HttpStatus.OK);
     }
     
     @RequestMapping(value= "/changepassword", method= RequestMethod.POST) 
-    public ResponseEntity changePassword(@RequestBody PasswordChange passwordObject) throws IOException {
+    public ResponseEntity<Void> changePassword(@RequestBody PasswordChange passwordObject) throws IOException {
     	System.out.println("changing password...");
     	requestManager.getUserService().changePassword(passwordObject.getOldPassword(), passwordObject.getNewPassword());
-    	return new ResponseEntity(HttpStatus.OK);
+    	return new ResponseEntity<Void>(HttpStatus.OK);
     }
     
     @RequestMapping(value= "/updatefavoriteteam", method= RequestMethod.PUT) 
-    public ResponseEntity changeFavoriteTeam(@RequestBody TeamChange teamObject) throws IOException {
+    public ResponseEntity<Void> changeFavoriteTeam(@RequestBody TeamChange teamObject) throws IOException {
     	requestManager.getUserService().changeFavoriteTeam(teamObject.getId(), teamObject.getFavoriteTeamId());
-    	return new ResponseEntity(HttpStatus.OK);
+    	return new ResponseEntity<Void>(HttpStatus.OK);
     }
     
     @RequestMapping(value= "/games/{game_id}", method= RequestMethod.GET) 
