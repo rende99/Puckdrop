@@ -13,6 +13,7 @@
   </dependencies>
   <modules>
   	<module>../PuckModel</module>
+  	<module>../PuckApiService</module>
   	<module>../PuckBEService</module>
   	<module>../PuckFront</module>
   </modules>

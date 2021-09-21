@@ -3,7 +3,7 @@ package com.spring.mvc.manager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.spring.mvc.service.ApiService;
+import org.PuckApiService.service.ApiService;
 import org.PuckBEService.service.MessageService;
 import org.PuckBEService.service.UserService;
 
