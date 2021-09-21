@@ -31,5 +31,6 @@
 	</classpathentry>
 	<classpathentry combineaccessrules="false" kind="src" path="/PuckBEService"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/PuckModel"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/PuckApiService"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

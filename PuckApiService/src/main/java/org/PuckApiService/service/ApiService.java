@@ -1,4 +1,4 @@
-package com.spring.mvc.service;
+package org.PuckApiService.service;
 
 import org.springframework.stereotype.Service;
 

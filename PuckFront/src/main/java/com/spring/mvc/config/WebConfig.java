@@ -6,7 +6,7 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 @Configuration
 @EnableWebMvc
-@ComponentScan({ "com.spring.mvc", "org.PuckBEService" })
+@ComponentScan({ "com.spring.mvc", "org.PuckBEService", "org.PuckApiService" })
 public class WebConfig {
 
 }
