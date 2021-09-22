@@ -25,6 +25,7 @@ import { GameCenterPageComponent } from './game-center-page/game-center-page.com
 import { LeagueGamesComponent } from './league-games/league-games.component';
 import { GamePageComponent } from './game-page/game-page.component';
 import { CookieService } from 'ngx-cookie-service';
+import { MarqueeComponent } from './marquee/marquee.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -46,6 +47,7 @@ import { CookieService } from 'ngx-cookie-service';
     GameCenterPageComponent,
     LeagueGamesComponent,
     GamePageComponent,
+    MarqueeComponent,
   ],
   imports: [
     BrowserModule,
