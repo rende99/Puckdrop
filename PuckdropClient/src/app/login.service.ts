@@ -49,7 +49,7 @@ export class LoginService {
   }
 
   changePassword(passwordObject: changePassCred) {
-    return this._http.post(global.APP_URL + '/changepassword', JSON.stringify(passwordObject), {'headers': this.headers});
+    return this._http.put(global.APP_URL + '/changepassword', JSON.stringify(passwordObject), {'headers': this.headers});
   }
 
   deleteAccount(deleteObject: deleteCred) {
