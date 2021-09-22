@@ -54,7 +54,7 @@ public class RequestController {
     	return new ResponseEntity<Void>(HttpStatus.OK);
     }
     
-    @RequestMapping(value= "/changepassword", method= RequestMethod.POST) 
+    @RequestMapping(value= "/changepassword", method= RequestMethod.PUT) 
     public ResponseEntity<Void> changePassword(@RequestBody PasswordChange passwordObject) throws IOException {
     	System.out.println("changing password...");
     	requestManager.getUserService().changePassword(passwordObject.getOldPassword(), passwordObject.getNewPassword());
