@@ -6,7 +6,7 @@
     height: 50px;
     overflow: hidden;
     position: relative;
-    background-color: black;
+    background-color: #212529;
     color: whitesmoke;
 
     .marquee-intermediate {
@@ -27,7 +27,7 @@
             flex-direction: row;
             justify-content: space-around;
             align-items: center;
-            background-color: #111;
+            background-color: #2c3034;
             border-radius: 40px;
             cursor: pointer;
 
@@ -56,6 +56,6 @@
         transform: translateX(100%); 		
         }
     100% { 
-        transform: translateX(calc(-4.7% * #{$marquee-time-raw}));
+        transform: translateX(calc(-4.8% * #{$marquee-time-raw}));
     }
 }

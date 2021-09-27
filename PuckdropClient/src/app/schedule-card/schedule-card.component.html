@@ -17,7 +17,7 @@
                 <img class="opp-img" [src]="getLogoFromId(data.teams.away.team.id)" alt="Opponent Team Logo">
                 <p> {{data.teams.away.leagueRecord.wins}} -
                     {{data.teams.away.leagueRecord.losses}} -
-                    {{data.teams.away.leagueRecord.ot}}
+                    {{data.teams.away.leagueRecord.ot || 0}}
                 </p>
             </div>
             <div class= "vertical-line"></div>
@@ -25,7 +25,7 @@
                 <img class="home-img" [src]="getLogoFromId(data.teams.home.team.id)" alt="Home Team Logo">
                 <p> {{data.teams.home.leagueRecord.wins}} -
                     {{data.teams.home.leagueRecord.losses}} -
-                    {{data.teams.home.leagueRecord.ot}}
+                    {{data.teams.home.leagueRecord.ot || 0}}
                 </p>
             </div>
         </div>
