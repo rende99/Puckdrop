@@ -14,32 +14,32 @@
 ## Screens
 
 ### Login/Signup
-![Login page](miscResources/img/pd11.png)
+![Login page](miscResources/img/x11.png)
 
 ### League Standings
-![League Standings table](miscResources/img/pd1.png)
+![League Standings table](miscResources/img/x1.png)
 
 ### League Chat
-![League Chat box](miscResources/img/pd2.png)
+![League Chat box](miscResources/img/x2.png)
 
 ### Game Center
-![Game Center page](miscResources/img/pd3.png)
+![Game Center page](miscResources/img/x3.png)
 
 ### Game Info
-![Game Information](miscResources/img/pd7.png)
-![Game Stats](miscResources/img/pd8.png)
+![Game Information](miscResources/img/x7.png)
+![Game Stats](miscResources/img/x8.png)
 
 ### Team page
-![Team page (Colorado Avalanche)](miscResources/img/pd4.png)
+![Team page (Colorado Avalanche)](miscResources/img/x4.png)
 
 ### Team roster
-![Team roster (Colorado Avalanche)](miscResources/img/pd5.png)
+![Team roster (Colorado Avalanche)](miscResources/img/x5.png)
 
 ### Player page
-![Player page (Nathan MacKinnon)](miscResources/img/pd6.png)
+![Player page (Nathan MacKinnon)](miscResources/img/x6.png)
 
 ### Team chat
-![Team chat (Colorado Avalanche)](miscResources/img/pd9.png)
+![Team chat (Colorado Avalanche)](miscResources/img/x9.png)
 
 ### User settings
-![Settings page](miscResources/img/pd10.png)
+![Settings page](miscResources/img/x10.png)
