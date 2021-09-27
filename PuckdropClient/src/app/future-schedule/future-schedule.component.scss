@@ -1,0 +1,33 @@
+.schedule-parent {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    margin: 30px 0px 30px 0px;
+}
+
+.section-title {
+    text-align: center;
+}
+
+.button-div {
+    display: flex;
+    justify-content: center;
+    margin: -10px 0px 50px 0px;
+    .schedule-toggle-button {
+        border: none;
+        border-radius: 5px;
+        background: none;
+        text-decoration: underline;
+    }
+}
+
+.future-schedule {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    size: 50%;
+    margin: 0px 5% 0px 5%;
+}

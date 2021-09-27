@@ -1,0 +1,61 @@
+@import "../../variables";
+
+
+
+.marquee-parent {
+    height: 50px;
+    overflow: hidden;
+    position: relative;
+    background-color: #212529;
+    color: whitesmoke;
+
+    .marquee-intermediate {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+
+        animation: marquee $marquee-time-formatted linear infinite;
+
+        &:hover {
+            animation-play-state: paused;
+        }
+
+        .marquee-content {
+            padding: 0 1rem 0 1rem;
+            margin: 0 2rem 0 2rem;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            align-items: center;
+            background-color: #2c3034;
+            border-radius: 40px;
+            cursor: pointer;
+
+            .team-logo {
+                max-height: 45px;
+                margin: 0;
+            }
+
+            .team-score {
+                font-weight: 300;
+                text-align: center;
+                min-width: 40px;
+            }
+
+            .game-state {
+                font-weight: 900;
+                text-align: center;
+                min-width: 6rem;
+            }
+        }
+    }
+}
+
+@keyframes marquee {
+    0%   { 
+        transform: translateX(100%); 		
+        }
+    100% { 
+        transform: translateX(calc(-4.8% * #{$marquee-time-raw}));
+    }
+}

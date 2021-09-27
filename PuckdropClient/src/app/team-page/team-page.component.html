@@ -1,0 +1,98 @@
+<app-navbar></app-navbar>
+<div class="page-header" *ngIf="(teamInfo | json) != ({} | json); else headerSkeleton">
+    <img class="team-logo" [src]="getTeamLogo()"/>
+    <h1 class="page-title">{{ teamInfo.name }}<sup class="title-sup">{{teamInfo.teamStats[0].splits[1].stat.pts}}</sup></h1>
+    <h5 class="page-subheader">
+        {{teamInfo.teamStats[0].splits[0].stat.wins}} -
+        {{teamInfo.teamStats[0].splits[0].stat.losses}} -
+        {{teamInfo.teamStats[0].splits[0].stat.ot}}
+    </h5>
+</div>
+<!-- SKELETON -->
+<ng-template class="skeleton" #headerSkeleton>
+    <div class="skeleton">
+        <app-skeleton class="img" [width]="'256px'" [height]="'256px'"></app-skeleton>
+        <div class="schedule">
+            <app-skeleton class="schedule-item" [width]="'300px'" [height]="'300px'"></app-skeleton>
+            <app-skeleton class="schedule-item" [width]="'300px'" [height]="'300px'"></app-skeleton>
+            <app-skeleton class="schedule-item" [width]="'300px'" [height]="'300px'"></app-skeleton>
+        </div>
+    </div>
+</ng-template>
+
+<app-future-schedule [id]="id"></app-future-schedule>
+<div class="table-parent">
+    <table class="table table-striped table-dark" *ngIf="(teamInfo | json) != ({} | json)">
+        <thead>
+            <tr>
+            <th scope="col">GP</th>
+            <th scope="col">W</th>
+            <th scope="col">L</th>
+            <th scope="col">OTL</th>
+            <th scope="col">Pts</th>
+            <th scope="col">GFA</th>
+            <th scope="col">GAA</th>
+            <th scope="col">Shots</th>
+            <th scope="col">SV%</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row">
+                    {{ teamInfo.teamStats[0].splits[0].stat.gamesPlayed }}
+                </th>
+                <td>
+                    {{ teamInfo.teamStats[0].splits[0].stat.wins }}
+                    <sup class="table-sup">
+                        {{ teamInfo.teamStats[0].splits[1].stat.wins }}
+                    </sup>
+                </td>
+                <td>
+                    {{ teamInfo.teamStats[0].splits[0].stat.losses }}
+                    <sup class="table-sup">
+                        {{ teamInfo.teamStats[0].splits[1].stat.losses }}
+                    </sup>
+                </td>
+                <td>
+                    {{ teamInfo.teamStats[0].splits[0].stat.ot }}
+                    <sup class="table-sup">
+                        {{ teamInfo.teamStats[0].splits[1].stat.ot }}
+                    </sup>
+                </td>
+                <td>
+                    {{ teamInfo.teamStats[0].splits[0].stat.pts }}
+                    <sup class="table-sup">
+                        {{ teamInfo.teamStats[0].splits[1].stat.pts }}
+                    </sup>
+                </td>
+                <td>
+                    {{ teamInfo.teamStats[0].splits[0].stat.goalsPerGame }}
+                    <sup class="table-sup">
+                        {{ teamInfo.teamStats[0].splits[1].stat.goalsPerGame }}
+                    </sup>
+                </td>
+                <td>
+                    {{ teamInfo.teamStats[0].splits[0].stat.goalsAgainstPerGame }}
+                    <sup class="table-sup">
+                        {{ teamInfo.teamStats[0].splits[1].stat.goalsAgainstPerGame }}
+                    </sup>
+                </td>
+                <td>
+                    {{ teamInfo.teamStats[0].splits[0].stat.shotsPerGame }}
+                    <sup class="table-sup">
+                        {{ teamInfo.teamStats[0].splits[1].stat.shotsPerGame }}
+                    </sup>
+                </td>
+                <td>
+                    {{ teamInfo.teamStats[0].splits[0].stat.savePctg }}
+                    <sup class="table-sup">
+                        {{ teamInfo.teamStats[0].splits[1].stat.savePctRank }}
+                    </sup>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<app-roster [id]="id"></app-roster>
+<app-chat-box [chatId]="id"></app-chat-box>
+<app-footer></app-footer>

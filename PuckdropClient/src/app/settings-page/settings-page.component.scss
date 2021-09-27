@@ -1,0 +1,87 @@
+.page-title {
+    text-align: center;
+    margin: 40px 0px 100px 0px;
+    font-size: 300%;
+}
+
+.settings-area-parent {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .settings-area-top-row {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: flex-end;
+        margin-bottom: 5rem;
+    }
+}
+
+.form-parent {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-width: 200px;
+    width: 40%;
+    margin: 0px 50px 0px 50px;
+}
+
+.form-group {
+    width: 100%;
+    margin: 10px;
+}
+
+.button {
+    margin: 20px;
+    padding: 10px 100px 10px 100px;
+    width: 100%;
+}
+
+.invalid-form {
+    color: red;
+    font-weight: 300;
+    margin-left: 6px;
+}
+
+.valid-form {
+    color: rgb(28, 238, 0);
+    margin-left: 6px;
+}
+
+.fas {
+    color: gray;
+    cursor: pointer;
+}
+
+
+.delete-account-div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 3rem 4rem 3rem 4rem;
+    border: 10px solid;
+    border-image: repeating-linear-gradient(45deg, #eee, #eee 10px,red 10px,red 20px) 20;
+
+    h2 {
+        font-weight: 900;
+    }
+
+}
+
+.modal-dialog {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .form-parent {
+
+        .modal-content {
+            min-width: 30rem;
+        }
+    }
+}

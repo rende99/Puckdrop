@@ -1,0 +1,13 @@
+.card-collection {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.no-games-label {
+    height: 40vh;
+    text-align: center;
+    margin-top: 10rem;
+}

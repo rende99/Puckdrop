@@ -1,0 +1,10 @@
+org\PuckBackend\dao\UserDaoImpl.class
+org\PuckBackend\service\UserService.class
+org\PuckBackend\service\MessageServiceImpl.class
+org\PuckBackend\service\UserServiceImpl.class
+org\PuckBackend\dao\AbstractDao.class
+org\PuckBackend\dao\MessageDao.class
+org\PuckBackend\service\MessageService.class
+org\PuckBackend\config\HibernateConfig.class
+org\PuckBackend\dao\MessageDaoImpl.class
+org\PuckBackend\dao\UserDao.class

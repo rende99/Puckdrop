@@ -1,0 +1,44 @@
+<app-navbar></app-navbar>
+<h1 class="page-title">Game Center</h1>
+<form class="form-parent" [formGroup]="dateInfo" (ngSubmit)="submitDate()">
+    <div class="form-group">
+        <label for="monthInput"><small>Month</small></label>
+        <span *ngIf="dateInfo.controls.month.invalid && 
+        (dateInfo.controls.month.dirty || dateInfo.controls.month.touched)" class="invalid-form">
+            <label *ngIf="dateInfo.controls.month.errors" class="invalid-form">
+                Invalid month.
+            </label>
+        </span>
+        <input type="text" class="form-control" id="monthInput"
+        placeholder="Month" formControlName="month" required>
+    </div>
+    <div class="form-group">
+        <label for="dayInput"><small>Day</small></label>
+        <span *ngIf="dateInfo.controls.day.invalid && 
+        (dateInfo.controls.day.dirty || dateInfo.controls.day.touched)" class="invalid-form">
+            <label *ngIf="dateInfo.controls.day.errors" class="invalid-form">
+                Invalid day.
+            </label>
+        </span>
+        <input type="text" class="form-control" id="dayInput"
+        placeholder="Day" formControlName="day" required>
+    </div>
+    <div class="form-group">
+        <label for="yearInput"><small>Year</small></label>
+        <span *ngIf="dateInfo.controls.year.invalid && 
+        (dateInfo.controls.year.dirty || dateInfo.controls.year.touched)" class="invalid-form">
+            <label *ngIf="dateInfo.controls.year.errors" class="invalid-form">
+                Invalid year.
+            </label>
+        </span>
+        <input type="text" class="form-control" id="yearInput"
+        placeholder="Year" formControlName="year" required>
+    </div>
+    <button type="submit" class="button btn btn-danger" 
+    [disabled]="dateInfo.controls.year.errors || dateInfo.controls.month.errors || dateInfo.controls.day.errors">
+        Search
+    </button>
+</form>
+<h4 class="page-subtitle">Games for: {{ this.date.replaceAll("-", "/") }}</h4>
+<app-league-games [today]="this.date"></app-league-games>
+<app-footer></app-footer>

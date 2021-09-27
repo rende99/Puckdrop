@@ -1,0 +1,172 @@
+<app-navbar></app-navbar>
+<div class="people-parent" 
+    *ngIf="(stats | json) != ({} | json) && (info | json) != ({} | json); else peopleSkeleton">
+    <ng-container *ngIf="stats; else noData">
+        <div class="relative-div">
+            <img class="player-image" [src]="playerImageUrl" (error)="imageLoadError()" [hidden]="!useRealImage">
+            <div *ngIf="!useRealImage" class="player-image-template">
+                <h1>?</h1>
+            </div>
+            <ul class="player-info-ul">
+                <li><i class="fas fa-birthday-cake"></i>{{ getAgeFromDate(info.birthDate) }}</li>
+                <li><i class="fas fa-ruler-vertical"></i>{{ info.height }}</li>
+                <li><i class="fas fa-weight"></i>{{ info.weight }} lbs</li>
+                <li><i class="fas fa-flag"></i>{{ info.birthCity}}, {{ info.birthCountry }}</li>
+            </ul>
+        </div>
+        <h2 class="player-name">{{ info.fullName }}</h2>
+        <h5 class="player-team" routerLink="/teams/{{info.currentTeam.id}}" [state]="{id: info.currentTeam.id}">
+            {{ info.currentTeam.name }} | {{ info.primaryPosition.name }} | #{{ info.primaryNumber }}
+        </h5>
+
+        <div class="stats-parent" *ngIf="info.primaryPosition.code !== 'G'">
+            <div class="stats-primary">
+                <div class="card">
+                    <h5 class="card-title">GP</h5>
+                    <h6 class="card-stat">{{ stats.stat.games }}</h6>
+                </div>
+                <div class="card">
+                    <h5 class="card-title">Goals</h5>
+                    <h6 class="card-stat">{{ stats.stat.goals }}</h6>
+                </div>
+                <div class="card">
+                    <h5 class="card-title">Assists</h5>
+                    <h6 class="card-stat">{{ stats.stat.assists }}</h6>
+                </div>
+                <div class="card">
+                    <h5 class="card-title">Points</h5>
+                    <h6 class="card-stat">{{ stats.stat.points }}</h6>
+                </div>
+                <div class="card">
+                    <h5 class="card-title">+/-</h5>
+                    <h6 class="card-stat">{{ stats.stat.plusMinus }}</h6>
+                </div>
+    
+            </div>
+            <div class="stats-general">
+                <h2 class="general-header">Other Stats</h2>
+                <h4 class="general-header-sub">Offensive Productivity</h4>
+                <div class="general-pool">
+                    <div class="card">
+                        <h5 class="card-title">Shots</h5>
+                        <h6 class="card-stat">{{ stats.stat.shots }}</h6>
+                    </div>
+                    <div class="card">
+                        <h5 class="card-title">Shot%</h5>
+                        <h6 class="card-stat">{{ stats.stat.shotPct/100 | percent }}</h6>
+                    </div>
+                    <div class="card">
+                        <h5 class="card-title">GWG</h5>
+                        <h6 class="card-stat">{{ stats.stat.gameWinningGoals }}</h6>
+                    </div>
+                    <div class="card">
+                        <h5 class="card-title">FO%</h5>
+                        <h6 class="card-stat">{{ stats.stat.faceOffPct/100 | percent }}</h6>
+                    </div>
+                    <div class="card">
+                        <h5 class="card-title">PP Points</h5>
+                        <h6 class="card-stat">{{ stats.stat.powerPlayPoints }}</h6>
+                    </div>
+                    <div class="card">
+                        <h5 class="card-title">Average PP TOI</h5>
+                        <h6 class="card-stat">{{ stats.stat.powerPlayTimeOnIcePerGame }}</h6>
+                    </div>
+                </div>
+                <h4 class="general-header-sub">Defensive Work</h4>
+                <div class="general-pool">
+                    <div class="card">
+                        <h5 class="card-title">Blocks</h5>
+                        <h6 class="card-stat">{{ stats.stat.blocked }}</h6>
+                    </div>
+                    <div class="card">
+                        <h5 class="card-title">Average SH TOI</h5>
+                        <h6 class="card-stat">{{ stats.stat.shortHandedTimeOnIcePerGame }}</h6>
+                    </div>
+                </div>
+                <h4 class="general-header-sub">Other</h4>
+                <div class="general-pool">
+                    <div class="card">
+                        <h5 class="card-title">Average TOI</h5>
+                        <h6 class="card-stat">{{ stats.stat.timeOnIcePerGame }}</h6>
+                    </div>
+                    <div class="card">
+                        <h5 class="card-title">Shifts</h5>
+                        <h6 class="card-stat">{{ stats.stat.shifts }}</h6>
+                    </div>
+                    <div class="card">
+                        <h5 class="card-title">Hits</h5>
+                        <h6 class="card-stat">{{ stats.stat.hits }}</h6>
+                    </div>
+                    <div class="card">
+                        <h5 class="card-title">PIM</h5>
+                        <h6 class="card-stat">{{ stats.stat.pim }}</h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="stats-parent" *ngIf="info.primaryPosition.code === 'G'">
+            <div class="stats-primary">
+                <div class="card">
+                    <h5 class="card-title">GP</h5>
+                    <h6 class="card-stat">{{ stats.stat.games }}</h6>
+                </div>
+                <div class="card">
+                    <h5 class="card-title">Shutouts</h5>
+                    <h6 class="card-stat">{{ stats.stat.shutouts }}</h6>
+                </div>
+                <div class="card">
+                    <h5 class="card-title">Wins</h5>
+                    <h6 class="card-stat">{{ stats.stat.wins }}</h6>
+                </div>
+                <div class="card">
+                    <h5 class="card-title">Losses</h5>
+                    <h6 class="card-stat">{{ stats.stat.losses }}</h6>
+                </div>
+                <div class="card">
+                    <h5 class="card-title">OTL</h5>
+                    <h6 class="card-stat">{{ stats.stat.ot }}</h6>
+                </div>
+            </div>
+            <div class="stats-general">
+                <h2 class="general-header">Other Stats</h2>
+                <h4 class="general-header-sub">Misc.</h4>
+                <div class="general-pool">
+                    <div class="card">
+                        <h5 class="card-title">SV%</h5>
+                        <h6 class="card-stat">{{ stats.stat.savePercentage }}</h6>
+                    </div>
+                    <div class="card">
+                        <h5 class="card-title">GAA</h5>
+                        <h6 class="card-stat">{{ stats.stat.goalAgainstAverage | number: '1.3' }}</h6>
+                    </div>
+                    <div class="card">
+                        <h5 class="card-title">Even Str. SV%</h5>
+                        <h6 class="card-stat">{{ stats.stat.evenStrengthSavePercentage/100 | number: '1.3' }}</h6>
+                    </div>
+                    <div class="card">
+                        <h5 class="card-title">SH SV%</h5>
+                        <h6 class="card-stat">{{ stats.stat.shortHandedSavePercentage/100 | number: '1.3' }}</h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ng-container>
+    <ng-template #noData>
+        <div class="no-data-div">
+            <h1>Whoops... Looks like we don't have any data on this player. Check back later!</h1>
+        </div>
+    </ng-template>
+</div>
+<ng-template #peopleSkeleton>
+    <div class="skeleton">
+        <app-skeleton class="img" [width]="'200px'" [height]="'170px'"></app-skeleton>
+        <div class="stat-line">
+            <app-skeleton class="stat" [width]="'200px'" [height]="'170px'"></app-skeleton>
+            <app-skeleton class="stat" [width]="'200px'" [height]="'170px'"></app-skeleton>
+            <app-skeleton class="stat" [width]="'200px'" [height]="'170px'"></app-skeleton>
+            <app-skeleton class="stat" [width]="'200px'" [height]="'170px'"></app-skeleton>
+            <app-skeleton class="stat" [width]="'200px'" [height]="'170px'"></app-skeleton>
+        </div>
+    </div>
+</ng-template>
+<app-footer></app-footer>

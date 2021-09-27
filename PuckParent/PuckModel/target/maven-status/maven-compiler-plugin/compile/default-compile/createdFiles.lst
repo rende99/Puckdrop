@@ -1,0 +1,6 @@
+org\PuckModel\model\DeleteAccountModel.class
+org\PuckModel\model\Message.class
+org\PuckModel\model\User.class
+org\PuckModel\model\NhlTeam.class
+org\PuckModel\model\PasswordChange.class
+org\PuckModel\model\TeamChange.class
