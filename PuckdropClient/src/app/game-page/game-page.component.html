@@ -9,7 +9,15 @@
             <h6 class="sog">Shots: {{ gameInfo.liveData.linescore.teams.away.shotsOnGoal }}</h6>
         </div>
         <div class="center-block">
-            <h2>{{ gameInfo.liveData.linescore.currentPeriodTimeRemaining | uppercase}}</h2>
+            <h2 *ngIf="gameInfo.gameData.status.abstractGameState === 'Preview'">
+                {{ formatGameTime(gameInfo.gameData.datetime.dateTime) }}
+            </h2>
+            <h2 *ngIf="gameInfo.gameData.status.abstractGameState === 'Live'">
+                {{ gameInfo.liveData.linescore.currentPeriodTimeRemaining | uppercase}}
+            </h2>
+            <h2 *ngIf="gameInfo.gameData.status.abstractGameState === 'Final'">
+                FINAL
+            </h2>
         </div>
         <div class="side-block">
             <h6 class="team-name">{{ gameInfo.gameData.teams.home.name }}</h6>
