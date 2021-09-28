@@ -25,14 +25,12 @@ export class MarqueeComponent implements OnInit {
   constructor(private scheduleService: ScheduleService) { }
 
   ngOnInit() {
-    console.log(this.today);
     this.getGamesToday();
   }
 
   getGamesToday(){
     this.scheduleService.getScheduleBetweenDates(this.today, this.today).subscribe(res => {
       let response: any = res;
-      console.log(res);
       for(var game of response.dates[0].games){
         let mObject: marqueeObject = {
           h_id: game.teams.home.team.id,
@@ -44,7 +42,6 @@ export class MarqueeComponent implements OnInit {
         }
         this.marqueeContent.push(mObject);
       }
-      console.log(this.marqueeContent);
       this.setMarqueeTime();
     });
   }
