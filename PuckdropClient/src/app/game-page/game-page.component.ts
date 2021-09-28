@@ -29,6 +29,16 @@ export class GamePageComponent implements OnInit {
     });
   }
 
+  formatGameTime(d: Date) {
+    var gameDate = new Date(d);
+    var h = gameDate.getHours();
+    var ampm = h >= 12 ? "pm" : "am";
+    h = h % 12;
+    var m = gameDate.getMinutes().toString();
+    m = ('0' + m).slice(-2);
+    return `${h}:${m}${ampm}`
+  }
+
   getLogoFromId(id: number) {
     var media = (teamMediaImport as any).default.find(x => {return x.id == id});
     return `../../assets/img/nhl-img/${media['img-url']}`;
