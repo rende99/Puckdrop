@@ -29,6 +29,9 @@
 ![Game Information](PuckdropClient/src/assets/readme/x7.png)
 ![Game Stats](PuckdropClient/src/assets/readme/x8.png)
 
+### Comparing Teams
+![Team Comparison Page](PuckdropClient/src/assets/readme/x12.png)
+
 ### Team page
 ![Team page (Colorado Avalanche)](PuckdropClient/src/assets/readme/x4.png)
 
